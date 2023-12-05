@@ -1,0 +1,52 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text */
+}
+
+/* Header Styles */
+header {
+    background: #1a1a1a; /* Slightly lighter dark background for the header */
+    color: #f0f0f0;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+/* Navigation Menu Styles */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #b3b3b3; /* Lighter color for hover effect */
+}
+
+/* Main Content Styles */
+main {
+    padding: 20px;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background: #1a1a1a;
+    color: #f0f0f0;
+}
+
+/* Add any additional styles here */
