@@ -4,14 +4,14 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background: #121212; /* Dark background */
-    color: #e0e0e0; /* Light text */
+    background: #f2f2f2; /* Dark background */
+    color: #101010; /* Light text */
 }
 
 /* Header Styles */
 header {
-    background: #1a1a1a; /* Slightly lighter dark background for the header */
-    color: #f0f0f0;
+    background: #dadada; /* Slightly lighter dark background for the header */
+    color: #101010;
     padding: 1rem 0;
     text-align: center;
 }
@@ -20,7 +20,10 @@ header {
 nav ul {
     list-style: none;
     padding: 0;
+    display: inline-block; /* Align with the profile picture */
+    vertical-align: top; /* Align top with the profile picture */
 }
+
 
 nav ul li {
     display: inline;
@@ -28,12 +31,12 @@ nav ul li {
 }
 
 nav a {
-    color: #e0e0e0;
+    color: #101010;
     text-decoration: none;
 }
 
 nav a:hover {
-    color: #b3b3b3; /* Lighter color for hover effect */
+    color: #535366; /* Lighter color for hover effect */
 }
 
 /* Main Content Styles */
@@ -49,4 +52,35 @@ footer {
     color: #f0f0f0;
 }
 
-/* Add any additional styles here */
+/* Profile Picture Styles */
+.profile-picture {
+    float: left; /* Align to the left */
+    margin-right: 20px; /* Space between the picture and navigation items */
+}
+
+.profile-picture img {
+    width: 80px; /* Adjust size as needed */
+    height: auto;
+    border-radius: 50%; /* Circular profile picture */
+    border: 2px solid #dadada; /* Optional border */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.interest-tag {
+    display: inline-block;
+    background: #535366; /* Dark background for tags */
+    color: #f0f0f0; /* Light text for tags */
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.interest-tag:hover {
+    background: #6d6d90; /* Lighter background on hover */
+}
