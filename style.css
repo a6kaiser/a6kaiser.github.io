@@ -4,16 +4,28 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background: #f2f2f2; /* Dark background */
-    color: #101010; /* Light text */
+    background: #f2f2f2;
+    color: #101010;
+    margin-left: 15%; /* Wider margin on the left */
+    margin-right: 15%; /* Wider margin on the right */
 }
 
 /* Header Styles */
 header {
-    background: #dadada; /* Slightly lighter dark background for the header */
+    background: #dadada;
     color: #101010;
     padding: 1rem 0;
     text-align: center;
+    border-radius: 10px; /* Rounded corners */
+    width: 90%; /* Smaller than the page width */
+    margin: 20px auto 0; /* Add top margin */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between; /* Aligns items to each side of the nav */
+    align-items: center; /* Centers items vertically */
+    /* Other styling as needed */
 }
 
 /* Navigation Menu Styles */
@@ -23,7 +35,6 @@ nav ul {
     display: inline-block; /* Align with the profile picture */
     vertical-align: top; /* Align top with the profile picture */
 }
-
 
 nav ul li {
     display: inline;
@@ -39,22 +50,15 @@ nav a:hover {
     color: #535366; /* Lighter color for hover effect */
 }
 
-/* Main Content Styles */
-main {
-    padding: 20px;
-}
-
-/* Footer Styles */
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background: #1a1a1a;
-    color: #f0f0f0;
+.left-nav {
+    display: flex;
+    align-items: center; /* Aligns children vertically in the center */
 }
 
 /* Profile Picture Styles */
 .profile-picture {
     float: left; /* Align to the left */
+    margin-left: 20px;
     margin-right: 20px; /* Space between the picture and navigation items */
 }
 
@@ -65,17 +69,70 @@ footer {
     border: 2px solid #dadada; /* Optional border */
 }
 
-nav {
+.nav-menu {
     display: flex;
-    align-items: center;
+    align-items: center; /* Align items in nav-menu vertically */
+    /* Other styles for your navigation menu */
+}
+
+/* Assuming the same styling as your other social media links */
+.social-media-links a {
+    display: inline-block;
+    margin: 0 10px; /* Spacing between icons */
+}
+
+.social-media-links img {
+    width: 24px; /* Adjust size as needed */
+    height: auto;
+}
+
+/* Optional: Add hover effect */
+.social-media-links a:hover {
+    opacity: 0.7;
+}
+
+/* Main Content Styles */
+main {
+    padding: 20px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #f2f2f2; /* Light grey background */
+    color: #333; /* Dark text for readability */
+    padding: 20px; /* Some padding around the content */
+    text-align: center; /* Center align the content */
+}
+
+footer h3 {
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+footer ul {
+    list-style: none; /* Remove default list styling */
+    padding: 0;
+}
+
+footer li {
+    margin-bottom: 5px; /* Space between quotes */
+}
+
+footer a {
+    color: #007bff; /* Optional: style for links */
+    text-decoration: none; /* Optional: removes underline from links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Optional: adds underline on hover for links */
 }
 
 .interest-tag {
     display: inline-block;
     background: #535366; /* Dark background for tags */
     color: #f0f0f0; /* Light text for tags */
-    padding: 5px 10px;
-    margin: 5px;
+    padding: 3px 6px; /* Smaller padding */
+    font-size: 0.8em; /* Smaller font size */
+    margin: 2px; /* Adjusted margin */
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -83,4 +140,34 @@ nav {
 
 .interest-tag:hover {
     background: #6d6d90; /* Lighter background on hover */
+}
+
+.research-interests-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Allows wrapping if the screen is too small */
+}
+
+.research-interests-header h2 {
+  margin-right: 10px; /* Spacing between the heading and the tags */
+}
+
+.interest-tags {
+  display: flex;
+  flex-wrap: wrap; /* Allows tags to wrap to the next line */
+}
+
+.experience-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+h3 {
+    margin-bottom: 0.5em; /* Add space below the heading */
+}
+
+.date-location {
+    white-space: nowrap; /* Prevents wrapping to ensure it stays on the same line */
+    text-align: right; /* Aligns text to the right */
 }
