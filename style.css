@@ -6,8 +6,6 @@ body {
     padding: 0;
     background: #f2f2f2;
     color: #101010;
-    margin-left: 15%; /* Wider margin on the left */
-    margin-right: 15%; /* Wider margin on the right */
 }
 
 /* Header Styles */
@@ -16,29 +14,28 @@ header {
     color: #101010;
     padding: 1rem 0;
     text-align: center;
-    border-radius: 10px; /* Rounded corners */
-    width: 90%; /* Smaller than the page width */
-    margin: 20px auto 0; /* Add top margin */
+    border-radius: 10px;
+    width: 90%;
+    margin: 20px auto 0;
 }
 
 nav {
     display: flex;
-    justify-content: space-between; /* Aligns items to each side of the nav */
-    align-items: center; /* Centers items vertically */
-    /* Other styling as needed */
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Navigation Menu Styles */
 nav ul {
     list-style: none;
     padding: 0;
-    display: inline-block; /* Align with the profile picture */
-    vertical-align: top; /* Align top with the profile picture */
+    display: inline-block;
+    vertical-align: top;
 }
 
 nav ul li {
     display: inline;
     margin: 0 10px;
+    position: relative; /* For dropdown */
 }
 
 nav a {
@@ -47,116 +44,378 @@ nav a {
 }
 
 nav a:hover {
-    color: #535366; /* Lighter color for hover effect */
+    color: #535366;
 }
 
 .left-nav {
     display: flex;
-    align-items: center; /* Aligns children vertically in the center */
+    align-items: center;
 }
 
-/* Profile Picture Styles */
 .profile-picture {
-    float: left; /* Align to the left */
+    float: left;
     margin-left: 20px;
-    margin-right: 20px; /* Space between the picture and navigation items */
+    margin-right: 20px;
 }
 
 .profile-picture img {
-    width: 80px; /* Adjust size as needed */
+    width: 80px;
     height: auto;
-    border-radius: 50%; /* Circular profile picture */
-    border: 2px solid #dadada; /* Optional border */
+    border-radius: 50%;
+    border: 2px solid #dadada;
 }
 
 .nav-menu {
     display: flex;
-    align-items: center; /* Align items in nav-menu vertically */
-    /* Other styles for your navigation menu */
+    align-items: center;
 }
 
-/* Assuming the same styling as your other social media links */
 .social-media-links a {
     display: inline-block;
-    margin: 0 10px; /* Spacing between icons */
+    margin: 0 10px;
 }
 
 .social-media-links img {
-    width: 24px; /* Adjust size as needed */
+    width: 24px;
     height: auto;
 }
 
-/* Optional: Add hover effect */
 .social-media-links a:hover {
     opacity: 0.7;
 }
 
+/* Dropdown Menu Styles */
+.nav-menu .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-menu .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #dadada;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 100%; /* Position below the dropdown button */
+    left: 0;
+}
+
+.nav-menu .dropdown-content a {
+    color: #101010;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.nav-menu .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.nav-menu .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.nav-menu .dropbtn {
+    cursor: pointer;
+}
+
+/* Container for TOC and Main Content */
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Table of Contents (TOC) Styles */
+.toc {
+    width: 250px;
+    max-height: 80vh;
+    overflow-y: auto;
+    margin-right: 40px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative; /* For toggle button positioning */
+    transition: transform 0.3s ease-in-out;
+}
+
+.toc.collapsed {
+    transform: translateX(-100%);
+}
+
+#toggle-toc {
+    position: absolute;
+    top: 10px;
+    right: -40px;
+    background-color: #535366;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+#toggle-toc:hover {
+    background-color: #6d6d90;
+}
+
+.toc h2 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.toc ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.toc ul li {
+    margin-bottom: 10px;
+}
+
+.toc ul li a {
+    text-decoration: none;
+    color: #535366;
+    font-weight: bold;
+}
+
+.toc ul li a:hover {
+    color: #6d6d90;
+}
+
+.toc ul li ul {
+    list-style: none;
+    padding-left: 15px;
+    margin-top: 5px;
+}
+
+.toc ul li ul li a {
+    font-weight: normal;
+    color: #101010;
+}
+
+.toc ul li ul li a:hover {
+    color: #535366;
+}
+
 /* Main Content Styles */
 main {
-    padding: 20px;
+    flex: 1;
+    background: #ffffff;
+    padding: 20px 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden; /* To contain floating elements */
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Adjust main content when TOC is collapsed */
+.container.toc-collapsed main {
+    margin-left: 0;
+}
+
+/* Course Content Styles */
+.course-content h1,
+.course-content h2,
+.course-content h3 {
+    color: #333;
+}
+
+.course-content h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.course-content h2 {
+    margin-top: 40px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.course-content h3 {
+    margin-top: 30px;
+}
+
+.course-content p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* Collapsible Styles */
+.collapsible {
+    margin-bottom: 20px;
+}
+
+.collapsible-button {
+    background-color: #6d6d90;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.collapsible-button:hover {
+    background-color: #535366;
+}
+
+.collapsible-content {
+    display: none;
+    padding: 10px 15px;
+    background-color: #f9f9f9;
+    border-left: 3px solid #535366;
+    border-right: 3px solid #535366;
+    border-bottom: 3px solid #535366;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Code and LaTeX Block Styles */
+.code-block, .latex-block {
+    background: #f7f7f7;
+    border-left: 4px solid #535366; /* Default border color */
+    padding: 0; /* Remove padding to reduce top space */
+    margin: 20px 0;
+    overflow: auto;
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+/* Banner Styles */
+.block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #535366; /* Dark background */
+    color: #ffffff; /* White text */
+    padding: 8px 12px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.code-block .block-header {
+    background-color: #535366; /* Dark purple for code */
+}
+
+.latex-block .block-header {
+    background-color: #6d6d90; /* Lighter purple for LaTeX */
+}
+
+/* Copy Button Styles */
+.copy-button {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.copy-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.copy-button:focus {
+    outline: none;
+}
+
+/* Code and LaTeX Content Styles */
+.code-block pre, .latex-block pre {
+    margin: 0;
+    padding: 15px;
+    background: #f7f7f7;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 0.95em;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow-x: auto;
+}
+
+/* LaTeX Block Specific Styles */
+.latex-block p {
+    margin: 15px;
+    font-style: italic;
+}
+
+.math-equation {
+    margin: 15px;
+    text-align: center;
+}
+
+/* Syntax Highlighting Overrides (Optional) */
+pre[class*="language-"] {
+    margin: 0;
+    padding: 15px;
+    overflow: auto;
+    border-radius: 0 0 5px 5px; /* Ensure bottom corners are rounded */
 }
 
 /* Footer Styles */
 footer {
-    background-color: #f2f2f2; /* Light grey background */
-    color: #333; /* Dark text for readability */
-    padding: 20px; /* Some padding around the content */
-    text-align: center; /* Center align the content */
+    background-color: #f2f2f2;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
 }
 
-footer h3 {
-    margin-bottom: 10px; /* Space below the heading */
+footer p {
+    margin: 0;
 }
 
-footer ul {
-    list-style: none; /* Remove default list styling */
-    padding: 0;
-}
-
-footer li {
-    margin-bottom: 5px; /* Space between quotes */
-}
-
-footer a {
-    color: #007bff; /* Optional: style for links */
-    text-decoration: none; /* Optional: removes underline from links */
-}
-
-footer a:hover {
-    text-decoration: underline; /* Optional: adds underline on hover for links */
-}
-
+/* Interest Tags Styles */
 .interest-tag {
     display: inline-block;
-    background: #535366; /* Dark background for tags */
-    color: #f0f0f0; /* Light text for tags */
-    padding: 3px 6px; /* Smaller padding */
-    font-size: 0.8em; /* Smaller font size */
-    margin: 2px; /* Adjusted margin */
+    background: #535366;
+    color: #f0f0f0;
+    padding: 3px 6px;
+    font-size: 0.8em;
+    margin: 2px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .interest-tag:hover {
-    background: #6d6d90; /* Lighter background on hover */
+    background: #6d6d90;
 }
 
+/* Research Interests Header */
 .research-interests-header {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap; /* Allows wrapping if the screen is too small */
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .research-interests-header h2 {
-  margin-right: 10px; /* Spacing between the heading and the tags */
+    margin-right: 10px;
 }
 
 .interest-tags {
-  display: flex;
-  flex-wrap: wrap; /* Allows tags to wrap to the next line */
+    display: flex;
+    flex-wrap: wrap;
 }
 
+/* Experience Item */
 .experience-item {
     display: flex;
     justify-content: space-between;
@@ -164,10 +423,83 @@ footer a:hover {
 }
 
 h3 {
-    margin-bottom: 0.5em; /* Add space below the heading */
+    margin-bottom: 0.5em;
 }
 
+/* Date and Location */
 .date-location {
-    white-space: nowrap; /* Prevents wrapping to ensure it stays on the same line */
-    text-align: right; /* Aligns text to the right */
+    white-space: nowrap;
+    text-align: right;
+}
+
+/* Responsive Design */
+@media (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .toc {
+        width: 100%;
+        max-height: none;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    /* Adjust toggle button position for smaller screens */
+    #toggle-toc {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .container.toc-collapsed main {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .toc {
+        padding: 10px;
+    }
+
+    .toc h2 {
+        font-size: 1em;
+    }
+
+    .toc ul li a {
+        font-size: 0.9em;
+    }
+
+    .copy-button {
+        font-size: 0.8em;
+        padding: 4px 8px;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    /* Adjust toggle button size for smaller screens */
+    #toggle-toc {
+        width: 25px;
+        height: 25px;
+        font-size: 1em;
+    }
+}
+
+/* Collapsed TOC Adjustments */
+.toc.collapsed {
+    transform: translateX(-100%);
+}
+
+.container.toc-collapsed main {
+    margin-left: 0;
+}
+
+.toc.collapsed ul, .toc.collapsed h2 {
+    display: none;
 }

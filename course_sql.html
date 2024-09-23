@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to SQL - Course</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="course_style.css">
+
+    <!-- Prism.js CSS for Syntax Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+
+    <!-- MathJax for LaTeX Rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+
+    <!-- Top Banner -->
+    <header class="top-banner">
+        <div class="banner-content">
+            <img src="icons/profile_pic.jpg" alt="Course Logo" class="banner-logo">
+            <h1>Introduction to SQL</h1>
+            <nav class="banner-nav">
+                <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">
+                    <img src="icons/github_icon.png" alt="GitHub">
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn">
+                    <img src="icons/linkedin_icon.png" alt="LinkedIn">
+                </a>
+                <a href="https://twitter.com/yourhandle" target="_blank" aria-label="Twitter">
+                    <img src="icons/twitter_icon.png" alt="Twitter">
+                </a>
+                <a href="mailto:youremail@example.com" aria-label="Email">
+                    <img src="icons/email_icon.png" alt="Email">
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Table of Contents (Sidebar) -->
+        <aside id="sidebar" class="sidebar">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#chapter1">Chapter 1: Introduction to Databases</a></li>
+                <li>
+                    <a href="#chapter2">Chapter 2: Basic SQL Queries</a>
+                    <ul>
+                        <li><a href="#section2.1">2.1 SELECT Statement</a></li>
+                        <li><a href="#section2.2">2.2 WHERE Clause</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#chapter3">Chapter 3: Mathematical Operations in SQL</a>
+                    <ul>
+                        <li><a href="#section3.1">3.1 Calculating Averages</a></li>
+                        <li><a href="#section3.2">3.2 Summation</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Toggle Button inside the Sidebar -->
+            <button id="toggleButtonsidebar" class="toggle-button" onclick="togglesidebar()" aria-expanded="true" aria-label="Collapse Sidebar">Toggle</button>
+        </aside>
+
+        <!-- Content Area -->
+        <div id="content" class="content">
+            <h2>Introduction to SQL</h2>
+            <p>Welcome to the Introduction to SQL course. In this course, we'll cover the basics of SQL, including how to query databases, manipulate data, and more.</p>
+
+            <h2 id="chapter1">Chapter 1: Introduction to Databases</h2>
+            <div class="collapsible-section">
+                <button class="collapsible-button" aria-expanded="false">Toggle Explanation</button>
+                <div class="collapsible-content">
+                    <p>In this chapter, we'll learn about what databases are and why they're important.</p>
+                </div>
+            </div>
+
+            <h3 id="section1.1">1.1 What is a Database?</h3>
+            <div class="collapsible-section">
+                <button class="collapsible-button" aria-expanded="false">Toggle Explanation</button>
+                <div class="collapsible-content">
+                    <p>A database is an organized collection of data, generally stored and accessed electronically from a computer system.</p>
+                </div>
+            </div>
+
+            <h3 id="section1.2">1.2 Relational Databases</h3>
+            <div class="collapsible-section">
+                <button class="collapsible-button" aria-expanded="false">Toggle Explanation</button>
+                <div class="collapsible-content">
+                    <p>Relational databases are based on the relational model of data, which organizes data into tables (relations) of rows and columns.</p>
+                </div>
+            </div>
+
+            <h2 id="chapter2">Chapter 2: Basic SQL Queries</h2>
+            <div class="collapsible-section">
+                <button class="collapsible-button" aria-expanded="false">Toggle Explanation</button>
+                <div class="collapsible-content">
+                    <p>This chapter introduces basic SQL queries for retrieving data.</p>
+                </div>
+            </div>
+
+            <h3 id="section2.1">2.1 SELECT Statement</h3>
+            <div class="collapsible-section">
+                <button class="collapsible-button" aria-expanded="false">Toggle Explanation</button>
+                <div class="collapsible-content">
+                    <p>The <code>SELECT</code> statement is used to select data from a database.</p>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="block-header">
+                    <span class="block-type">SQL</span>
+                    <button class="copy-button" data-clipboard-target="#code-sql-1" aria-label="Copy SQL code">Copy</button>
+                </div>
+                <pre><code id="code-sql-1" class="language-sql">
+SELECT column1, column2
+FROM table_name;
+                </code></pre>
+            </div>
+
+            <h3 id="section2.2">2.2 WHERE Clause</h3>
+            <div class="collapsible-section">
+                <button class="collapsible-button" aria-expanded="false">Toggle Explanation</button>
+                <div class="collapsible-content">
+                    <p>The <code>WHERE</code> clause is used to filter records.</p>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="block-header">
+                    <span class="block-type">SQL</span>
+                    <button class="copy-button" data-clipboard-target="#code-sql-2" aria-label="Copy SQL code">Copy</button>
+                </div>
+                <pre><code id="code-sql-2" class="language-sql">
+SELECT column1, column2
+FROM table_name
+WHERE condition;
+                </code></pre>
+            </div>
+
+            <h2 id="chapter3">Chapter 3: Mathematical Operations in SQL</h2>
+            <div class="collapsible-section">
+                <button class="collapsible-button" aria-expanded="false">Toggle Explanation</button>
+                <div class="collapsible-content">
+                    <p>SQL can perform various mathematical operations.</p>
+                </div>
+            </div>
+
+            <h3 id="section3.1">3.1 Calculating Averages</h3>
+            <div class="collapsible-section">
+                <button class="collapsible-button" aria-expanded="false">Toggle Explanation</button>
+                <div class="collapsible-content">
+                    <p>We can calculate the average of a set of values using the <code>AVG</code> function.</p>
+                </div>
+            </div>
+
+            <div class="latex-block">
+                <div class="block-header">
+                    <span class="block-type">LaTeX</span>
+                    <button class="copy-button" data-clipboard-target="#latex-1" aria-label="Copy LaTeX code">Copy</button>
+                </div>
+                <p>Formula for average:</p>
+                <div class="math-equation">
+                    $$ \text{Average} = \frac{\sum_{i=1}^{n} x_i}{n} $$
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="block-header">
+                    <span class="block-type">SQL</span>
+                    <button class="copy-button" data-clipboard-target="#code-sql-3" aria-label="Copy SQL code">Copy</button>
+                </div>
+                <pre><code id="code-sql-3" class="language-sql">
+SELECT AVG(column_name)
+FROM table_name;
+                </code></pre>
+            </div>
+
+            <h3 id="section3.2">3.2 Summation</h3>
+            <div class="collapsible-section">
+                <button class="collapsible-button" aria-expanded="false">Toggle Explanation</button>
+                <div class="collapsible-content">
+                    <p>The <code>SUM</code> function returns the total sum of a numeric column.</p>
+                </div>
+            </div>
+
+            <div class="latex-block">
+                <div class="block-header">
+                    <span class="block-type">LaTeX</span>
+                    <button class="copy-button" data-clipboard-target="#latex-2" aria-label="Copy LaTeX code">Copy</button>
+                </div>
+                <p>Summation formula:</p>
+                <div class="math-equation">
+                    $$ S = \sum_{i=1}^{n} x_i $$
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="block-header">
+                    <span class="block-type">SQL</span>
+                    <button class="copy-button" data-clipboard-target="#code-sql-4" aria-label="Copy SQL code">Copy</button>
+                </div>
+                <pre><code id="code-sql-4" class="language-sql">
+SELECT SUM(column_name)
+FROM table_name;
+                </code></pre>
+            </div>
+
+            <!-- Toggle Button inside the Content (only appears when sidebar is hidden) -->
+            <button id="toggleButtonContent" class="toggle-button-content" onclick="togglesidebar()" aria-expanded="false" aria-label="Expand Sidebar">Toggle</button>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <!-- Clipboard.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+
+    <!-- Prism.js JS for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-latex.min.js"></script>
+
+    <!-- Custom JavaScript for Sidebar and Collapsible Sections -->
+    <script src="course_script.js"></script>
+</body>
+</html>

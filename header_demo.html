@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header with Icons and Dropdown</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .profile-pic {
+            display: flex;
+            align-items: center;
+            margin-right: 40px; /* Added margin to increase space between the profile pic and the links */
+        }
+
+        .profile-pic img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Dropdown container */
+        .courses-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown content (hidden by default) */
+        .courses-dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #f4f4f4;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 10px;
+        }
+
+        /* Links inside the dropdown */
+        .courses-dropdown-content a {
+            color: #333;
+            padding: 8px 10px;
+            text-decoration: none;
+            display: block;
+            font-weight: normal;
+        }
+
+        .courses-dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        /* Show the dropdown menu on hover */
+        .courses-dropdown:hover .courses-dropdown-content {
+            display: block;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+        }
+
+        .social-icons img {
+            width: 25px;
+            height: 25px;
+        }
+
+        .spacer {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <!-- Profile picture and navigation -->
+        <div class="profile-pic">
+            <a href="photos.html">
+                <img src="icons/profile_pic.jpg" alt="Profile Picture">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="resume.html">Resume</a>
+            <!-- Dropdown container for courses -->
+            <div class="courses-dropdown">
+                <a href="courses.html">Courses</a>
+                <div class="courses-dropdown-content">
+                    <a href="course1.html">Course 1</a>
+                    <a href="course2.html">Course 2</a>
+                    <a href="course3.html">Course 3</a>
+                    <a href="course4.html">Course 4</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <!-- Social media icons -->
+        <div class="social-icons">
+            <a href="https://github.com/a6kaiser" target="_blank">
+                <img src="icons/github_icon.png" alt="GitHub">
+            </a>
+            <a href="mailto:amjkaiser@gmail.com">
+                <img src="icons/gmail_icon.png" alt="Gmail">
+            </a>
+            <a href="https://www.linkedin.com/in/alexandre-k-823639b6/" target="_blank">
+                <img src="icons/linkedin_icon.png" alt="LinkedIn">
+            </a>
+            <a href="https://x.com/amjkaiser" target="_blank">
+                <img src="icons/twitter_icon.png" alt="Twitter">
+            </a>
+            <a href="https://scholar.google.com/citations?hl=en&user=axyxBscAAAAJ" target="_blank">
+                <img src="icons/scholar_icon.png" alt="Google Scholar">
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

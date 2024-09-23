@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Page with Header, Sidebar, and Content</title>
+    <style>
+        /* Reset default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            /* Allow the body to scroll */
+            overflow: auto;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed; /* Fix the header at the top */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure the header stays above other elements */
+            height: 70px; /* Fixed height for the header */
+        }
+
+        .header .profile-pic img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px; /* Reduced gap to lessen space between profile and menu */
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Dropdown Styles */
+        .courses-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .courses-dropdown-content {
+            min-width: 200px; /* Ensures dropdown is wide enough */
+            width: auto;      /* Allows dropdown to expand based on content */
+            white-space: nowrap; /* Prevents text from wrapping */
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #f4f4f4;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1001; /* Ensure dropdown is above other elements */
+            padding: 10px;
+        }
+
+        .courses-dropdown-content a {
+            color: #333;
+            padding: 8px 10px;
+            text-decoration: none;
+            display: block;
+            font-weight: normal;
+        }
+
+        .courses-dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .courses-dropdown:hover .courses-dropdown-content {
+            display: block;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons img {
+            width: 25px;
+            height: 25px;
+        }
+
+        /* Main Container Styles */
+        .main-container {
+            display: flex;
+            margin-top: 70px; /* Space for the fixed header */
+            height: calc(100vh - 70px); /* Full viewport height minus header */
+            width: 100%;
+            position: relative;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px; /* Fixed sidebar width */
+            background-color: #f4f4f4; /* Sidebar background */
+            box-sizing: border-box;
+            transition: transform 0.3s ease;
+            position: fixed; /* Fix the sidebar below the header */
+            top: 70px; /* Below the fixed header */
+            left: 0;
+            height: calc(100vh - 70px); /* Full height minus header */
+            overflow-y: auto;
+            z-index: 999; /* Below the header */
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(-100%);
+        }
+
+        .sidebar-header {
+            width: 100%;
+            height: 50px;
+            background-color: #ccc;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+
+        /* Toggle button and search icon */
+        .sidebar-header img {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .sidebar-content {
+            padding: 10px;
+        }
+
+        /* TOC styling with subtle font differences */
+        .sidebar-content ul {
+            list-style: none;
+            padding-left: 0;
+            position: relative;
+        }
+
+        /* Sections (Main headings) */
+        .sidebar-content ul li.section {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px; /* Space for vertical line */
+        }
+
+        /* Subsections (Level 2 headings) */
+        .sidebar-content ul li.subsection {
+            font-size: 16px;
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 20px; /* Space for vertical line */
+        }
+
+        /* Sub-subsections (Level 3 headings) */
+        .sidebar-content ul li.subsubsection {
+            font-size: 14px;
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 20px; /* Space for vertical line */
+        }
+
+        /* Vertical line for sections and subsections with children */
+        .sidebar-content ul li.section > ul:before,
+        .sidebar-content ul li.subsection > ul:before {
+            content: '';
+            position: absolute;
+            left: 10px; /* Align the line to the left edge */
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background-color: #ccc; /* Line color */
+        }
+
+        /* Make links in the TOC look like normal text */
+        .sidebar-content ul li a {
+            color: black; /* Change color to black */
+            text-decoration: none; /* Remove underline */
+            cursor: pointer; /* Keep the pointer for clarity */
+            font-weight: normal; /* Ensure all links are not bold by default */
+            display: block; /* Ensure clickable area spans the full width */
+        }
+
+        /* Only make main sections bold */
+        .sidebar-content ul li.section a {
+            font-weight: bold; /* Bold only for main sections */
+        }
+
+        .sidebar-content ul li a:hover {
+            text-decoration: underline; /* Optionally, add an underline on hover for clarity */
+        }
+
+        /* Content Area Styles */
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            margin-left: 250px; /* Space for the sidebar */
+            overflow-y: auto;
+            height: calc(100vh - 70px);
+            position: relative;
+            background-color: #ddd;
+            transition: margin-left 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the content horizontally */
+            justify-content: flex-start; /* Align content to the top */
+        }
+
+        .content.expanded {
+            margin-left: 0;
+        }
+
+        /* Toggle Button inside the content (only appears when sidebar is hidden) */
+        .toggle-btn-content {
+            position: fixed;
+            top: 83px; /* Slightly below the header */
+            left: 10px;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            z-index: 1001; /* Ensure it's above the content */
+            display: none;
+        }
+
+        .toggle-btn-content img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Style for sections */
+        section {
+            margin-bottom: 50px; /* Reduced margin for better spacing */
+            padding-top: 20px;
+            border-top: 2px solid #ccc;
+            width: 80%; /* Center the section content */
+            max-width: 800px; /* Maximum width for better readability */
+            background-color: #fff; /* Background color for contrast */
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.collapsed {
+                transform: translateX(0);
+            }
+
+            .content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .toggle-btn-content {
+                display: block;
+            }
+
+            /* Adjust content padding on small screens */
+            .content {
+                padding: 10px;
+            }
+
+            section {
+                width: 100%;
+                box-shadow: none;
+                border-top: 1px solid #ccc;
+                padding: 15px;
+            }
+
+            /* Adjust padding for sidebar content to accommodate smaller screens */
+            .sidebar-content ul li.section,
+            .sidebar-content ul li.subsection,
+            .sidebar-content ul li.subsubsection {
+                padding-left: 15px;
+            }
+
+            /* Adjust the vertical lines */
+            .sidebar-content ul li.section > ul:before,
+            .sidebar-content ul li.subsection > ul:before {
+                left: 7px; /* Adjust the line position for smaller padding */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <!-- Profile picture and navigation -->
+        <div class="profile-pic">
+            <a href="photos.html">
+                <img src="icons/profile_pic.jpg" alt="Profile Picture">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="resume.html">Resume</a>
+            <!-- Dropdown container for courses -->
+            <div class="courses-dropdown">
+                <a href="courses.html">Courses</a>
+                <div class="courses-dropdown-content">
+                    <a href="course1.html">Course 1: Introduction to HTML</a>
+                    <a href="course2.html">Course 2: Advanced CSS Techniques</a>
+                    <a href="course3.html">Course 3: JavaScript Essentials</a>
+                    <a href="course4.html">Course 4: Responsive Web Design</a>
+                    <!-- Add more courses as needed -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Social media icons -->
+        <div class="social-icons">
+            <a href="https://github.com/a6kaiser" target="_blank">
+                <img src="icons/github_icon.png" alt="GitHub">
+            </a>
+            <a href="mailto:amjkaiser@gmail.com">
+                <img src="icons/gmail_icon.png" alt="Gmail">
+            </a>
+            <a href="https://www.linkedin.com/in/alexandre-k-823639b6/" target="_blank">
+                <img src="icons/linkedin_icon.png" alt="LinkedIn">
+            </a>
+            <a href="https://x.com/amjkaiser" target="_blank">
+                <img src="icons/twitter_icon.png" alt="Twitter">
+            </a>
+            <a href="https://scholar.google.com/citations?hl=en&user=axyxBscAAAAJ" target="_blank">
+                <img src="icons/scholar_icon.png" alt="Google Scholar">
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar with TOC -->
+        <div id="sidebar" class="sidebar">
+            <!-- Sidebar Header with Toggle Button and Search Icon -->
+            <div class="sidebar-header">
+                <img class="toggle-btn" src="icons/sidebar_close_icon.png" alt="Collapse sidebar" onclick="toggleSidebar()" />
+                <img class="search-icon" src="icons/search_icon.png" alt="Search" />
+            </div>
+
+            <!-- Scrollable TOC Content with subtle font hierarchy -->
+            <div class="sidebar-content">
+                <h2>Table of Contents</h2>
+                <ul>
+                    <li class="section">
+                        <a href="#section1" onclick="scrollToSection(event, 'section1')">Section 1: Getting Started</a>
+                        <ul>
+                            <li class="subsection">
+                                <a href="#subsection1-1" onclick="scrollToSection(event, 'subsection1-1')">Subsection 1.1: Basics</a>
+                                <ul>
+                                    <li class="subsubsection">
+                                        <a href="#subsubsection1-1-1" onclick="scrollToSection(event, 'subsubsection1-1-1')">Sub-subsection 1.1.1: Introduction</a>
+                                    </li>
+                                    <li class="subsubsection">
+                                        <a href="#subsubsection1-1-2" onclick="scrollToSection(event, 'subsubsection1-1-2')">Sub-subsection 1.1.2: Setup</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="subsection">
+                                <a href="#subsection1-2" onclick="scrollToSection(event, 'subsection1-2')">Subsection 1.2: Installation</a>
+                                <ul>
+                                    <li class="subsubsection">
+                                        <a href="#subsubsection1-2-1" onclick="scrollToSection(event, 'subsubsection1-2-1')">Sub-subsection 1.2.1: Requirements</a>
+                                    </li>
+                                    <li class="subsubsection">
+                                        <a href="#subsubsection1-2-2" onclick="scrollToSection(event, 'subsubsection1-2-2')">Sub-subsection 1.2.2: Configuration</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="section">
+                        <a href="#section2" onclick="scrollToSection(event, 'section2')">Section 2: Advanced Topics</a>
+                    </li>
+                    <li class="section">
+                        <a href="#section1" onclick="scrollToSection(event, 'section1')">Section 1: Getting Started</a>
+                        <ul>
+                            <li class="subsection">
+                                <a href="#subsection1-1" onclick="scrollToSection(event, 'subsection1-1')">Subsection 1.1: Basics</a>
+                                <ul>
+                                    <li class="subsubsection">
+                                        <a href="#subsubsection1-1-1" onclick="scrollToSection(event, 'subsubsection1-1-1')">Sub-subsection 1.1.1: Introduction</a>
+                                    </li>
+                                    <li class="subsubsection">
+                                        <a href="#subsubsection1-1-2" onclick="scrollToSection(event, 'subsubsection1-1-2')">Sub-subsection 1.1.2: Setup</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="subsection">
+                                <a href="#subsection1-2" onclick="scrollToSection(event, 'subsection1-2')">Subsection 1.2: Installation</a>
+                                <ul>
+                                    <li class="subsubsection">
+                                        <a href="#subsubsection1-2-1" onclick="scrollToSection(event, 'subsubsection1-2-1')">Sub-subsection 1.2.1: Requirements</a>
+                                    </li>
+                                    <li class="subsubsection">
+                                        <a href="#subsubsection1-2-2" onclick="scrollToSection(event, 'subsubsection1-2-2')">Sub-subsection 1.2.2: Configuration</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="section">
+                        <a href="#section2" onclick="scrollToSection(event, 'section2')">Section 2: Advanced Topics</a>
+                    </li>
+                    <li class="section">
+                        <a href="#section1" onclick="scrollToSection(event, 'section1')">Section 1: Getting Started</a>
+                        <ul>
+                            <li class="subsection">
+                                <a href="#subsection1-1" onclick="scrollToSection(event, 'subsection1-1')">Subsection 1.1: Basics</a>
+                                <ul>
+                                    <li class="subsubsection">
+                                        <a href="#subsubsection1-1-1" onclick="scrollToSection(event, 'subsubsection1-1-1')">Sub-subsection 1.1.1: Introduction</a>
+                                    </li>
+                                    <li class="subsubsection">
+                                        <a href="#subsubsection1-1-2" onclick="scrollToSection(event, 'subsubsection1-1-2')">Sub-subsection 1.1.2: Setup</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="subsection">
+                                <a href="#subsection1-2" onclick="scrollToSection(event, 'subsection1-2')">Subsection 1.2: Installation</a>
+                                <ul>
+                                    <li class="subsubsection">
+                                        <a href="#subsubsection1-2-1" onclick="scrollToSection(event, 'subsubsection1-2-1')">Sub-subsection 1.2.1: Requirements</a>
+                                    </li>
+                                    <li class="subsubsection">
+                                        <a href="#subsubsection1-2-2" onclick="scrollToSection(event, 'subsubsection1-2-2')">Sub-subsection 1.2.2: Configuration</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="section">
+                        <a href="#section2" onclick="scrollToSection(event, 'section2')">Section 2: Advanced Topics</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div id="content" class="content">
+            <h2>Content Area</h2>
+
+            <!-- Sections linked to the sidebar -->
+            <section id="section1">
+                <h3>Section 1: Getting Started</h3>
+                <p>This is the content for section 1.</p>
+
+                <h4 id="subsection1-1">Subsection 1.1: Basics</h4>
+                <p>This is content for subsection 1.1.</p>
+
+                <h5 id="subsubsection1-1-1">Sub-subsection 1.1.1: Introduction</h5>
+                <p>This is content for sub-subsection 1.1.1.</p>
+
+                <h5 id="subsubsection1-1-2">Sub-subsection 1.1.2: Setup</h5>
+                <p>This is content for sub-subsection 1.1.2.</p>
+
+                <h4 id="subsection1-2">Subsection 1.2: Installation</h4>
+                <p>This is content for subsection 1.2.</p>
+
+                <h5 id="subsubsection1-2-1">Sub-subsection 1.2.1: Requirements</h5>
+                <p>This is content for sub-subsection 1.2.1.</p>
+
+                <h5 id="subsubsection1-2-2">Sub-subsection 1.2.2: Configuration</h5>
+                <p>This is content for sub-subsection 1.2.2.</p>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+Why do we use it?
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+
+Where does it come from?
+Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+
+Where can I get some?
+There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+
+5
+	paragraphs
+	words
+	bytes
+	lists
+	Start with 'Lorem
+ipsum dolor sit amet...'
+
+Donate: If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill. There is no minimum donation, any sum is appreciated - click here to donate using PayPal. Thank you for your support. Donate bitcoin: 16UQLq1HZ3CNwhvgrarV6pMoA2CDjb4tyF
+Translations: Can you help translate this site into a foreign language ? Please email us with details if you can help.
+There is a set of mock banners available here in three colours and in a range of standard banner sizes:
+BannersBannersBanners
+NodeJS Python Interface GTK Lipsum Rails .NET
+The standard Lorem Ipsum passage, used since the 1500s
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
+"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+
+1914 translation by H. Rackham
+"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
+
+Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
+"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+
+1914 translation by H. Rackham
+"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
+
+help@lipsum.com
+Privacy Policy ·
+
+</p>
+            </section>
+
+            <section id="section2">
+                <h3>Section 2: Advanced Topics</h3>
+                <p>This is the content for section 2.</p>
+            </section>
+
+            <!-- Toggle Button inside the content (only appears when sidebar is hidden) -->
+            <button id="toggleButtonContent" class="toggle-btn-content" onclick="toggleSidebar()">
+                <img src="icons/sidebar_open_icon.png" alt="Show sidebar" />
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            var content = document.getElementById("content");
+            var toggleBtn = document.querySelector(".toggle-btn");
+            var toggleBtnContent = document.getElementById("toggleButtonContent");
+
+            sidebar.classList.toggle("collapsed");
+            content.classList.toggle("expanded");
+
+            if (sidebar.classList.contains("collapsed")) {
+                toggleBtn.src = "icons/sidebar_open_icon.png"; // Change to open icon
+                toggleBtnContent.style.display = "block";
+            } else {
+                toggleBtn.src = "icons/sidebar_close_icon.png"; // Change to close icon
+                toggleBtnContent.style.display = "none";
+            }
+        }
+
+        function scrollToSection(event, sectionId) {
+            event.preventDefault(); // Prevent the default anchor behavior
+            var section = document.getElementById(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the section
+        }
+
+        // Optional: Close the sidebar when clicking outside (disabled to prevent interference)
+        /*
+        document.addEventListener('click', function(event) {
+            var sidebar = document.getElementById("sidebar");
+            var toggleBtn = document.querySelector(".toggle-btn");
+            var contentButton = document.getElementById("toggleButtonContent");
+            if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target) && !contentButton.contains(event.target)) {
+                if (!sidebar.classList.contains("collapsed")) {
+                    toggleSidebar();
+                }
+            }
+        });
+        */
+    </script>
+
+</body>
+</html>

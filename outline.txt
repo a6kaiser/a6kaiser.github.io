@@ -1,0 +1,248 @@
+index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Alexandre Kaiser - Homepage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="left-nav">
+        <div class="profile-picture">
+          <img src="icons/profile_pic.jpg" alt="Alexandre Kaiser">
+        </div>
+        <div class="nav-menu">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="course_sql.html">Courses</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="social-media-links">
+            <a href="https://github.com/a6kaiser" target="_blank">
+                <img src="icons/github_icon.png" alt="GitHub">
+            </a>
+            <a href="https://linkedin.com/in/alexandre-k-823639b6/" target="_blank">
+                <img src="icons/linkedin_icon.png" alt="LinkedIn">
+            </a>
+            <a href="https://twitter.com/amjkaiser" target="_blank">
+                <img src="icons/twitter_icon.png" alt="Twitter">
+            </a>
+            <a href="mailto:amjkaiser@gmail.com">
+                <img src="icons/email_icon.png" alt="Email">
+            </a>
+        </div>
+    </nav>
+  </header>
+  <main>
+    <p> Hello! I'm Alexandre Kaiser, a current Master's student in Computer Science at NYU Courant. Before that, I received my Bachelor's in Applied Mathematics from Northwestern University. I am honored to be advised by Arthur Jacot for my Master's thesis researching deep learning optimization for continual learning tasks. Aside from my studies, my recent work experience includes teaching, tutoring, engineering and a data scientist.</p>
+    <p>My goal is to work towards a world that strikes a better balance between innovation and wastefulness. As that is an optimization problem, I turn to my background in Applied Mathematcs which taught me the strength of utilizing abstractions to solve any and all applicable real-world tasks. However, most real-world tasks that I am interested in&mdash;education, governance, leadership&mdash;are too complex to be abstracted. I chose to study machine learning in the hope that one more layer of abstraction from the problem would enable us to model a machine which in turn can model any task.</p>
+
+    <div class="research-interests-header">
+      <h2>Research Interests</h2>
+      <div class="interest-tags">
+        <span class="interest-tag">Deep Learning</span>
+        <span class="interest-tag">Optimization</span>
+        <span class="interest-tag">Deep Learning Theory</span>
+        <span class="interest-tag">Online learning</span>
+        <span class="interest-tag">Learning Theory</span>
+      </div>
+    </div>
+    <p>My research interests lie particularly in the role of optimization on a model’s implicit bias and scaling properties, thus how features and symmetries develop in deep learning models. This includes research on how the loss surface lends itself to emergent behavior in practice. Though my research is theoretical, I am motivated by a desire to improve the usefulness of algorithms in practice. Agnostic to the task or even its modalities, I aim to improve our understanding of deep learning models to better predict their behavior in real-world applications. </p>
+  </main>
+  <footer>
+    <h3>Notable quotes and expressions I think about a lot</h3>
+    <ul>
+        <li>"Your math isn't real" - paraphrased from <a href="https://www.youtube.com/watch?v=W39kfrxOSHg&t=363s">Sabine Hossenfelder</a></li>
+        <li>"La lutte elle-même vers les sommets suffit à remplir un cœur d’homme." - <em>Le mythe de Sisyphe</em> by Albert Camus</li>
+        <li>"You can't know, but you can reason" - My original socratic expression
+    </ul>
+</footer>
+</body>
+</html>
+
+
+
+style.css
+
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f2f2f2;
+    color: #101010;
+    margin-left: 15%; /* Wider margin on the left */
+    margin-right: 15%; /* Wider margin on the right */
+}
+
+/* Header Styles */
+header {
+    background: #dadada;
+    color: #101010;
+    padding: 1rem 0;
+    text-align: center;
+    border-radius: 10px; /* Rounded corners */
+    width: 90%; /* Smaller than the page width */
+    margin: 20px auto 0; /* Add top margin */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between; /* Aligns items to each side of the nav */
+    align-items: center; /* Centers items vertically */
+    /* Other styling as needed */
+}
+
+/* Navigation Menu Styles */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: inline-block; /* Align with the profile picture */
+    vertical-align: top; /* Align top with the profile picture */
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav a {
+    color: #101010;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #535366; /* Lighter color for hover effect */
+}
+
+.left-nav {
+    display: flex;
+    align-items: center; /* Aligns children vertically in the center */
+}
+
+/* Profile Picture Styles */
+.profile-picture {
+    float: left; /* Align to the left */
+    margin-left: 20px;
+    margin-right: 20px; /* Space between the picture and navigation items */
+}
+
+.profile-picture img {
+    width: 80px; /* Adjust size as needed */
+    height: auto;
+    border-radius: 50%; /* Circular profile picture */
+    border: 2px solid #dadada; /* Optional border */
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center; /* Align items in nav-menu vertically */
+    /* Other styles for your navigation menu */
+}
+
+/* Assuming the same styling as your other social media links */
+.social-media-links a {
+    display: inline-block;
+    margin: 0 10px; /* Spacing between icons */
+}
+
+.social-media-links img {
+    width: 24px; /* Adjust size as needed */
+    height: auto;
+}
+
+/* Optional: Add hover effect */
+.social-media-links a:hover {
+    opacity: 0.7;
+}
+
+/* Main Content Styles */
+main {
+    padding: 20px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #f2f2f2; /* Light grey background */
+    color: #333; /* Dark text for readability */
+    padding: 20px; /* Some padding around the content */
+    text-align: center; /* Center align the content */
+}
+
+footer h3 {
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+footer ul {
+    list-style: none; /* Remove default list styling */
+    padding: 0;
+}
+
+footer li {
+    margin-bottom: 5px; /* Space between quotes */
+}
+
+footer a {
+    color: #007bff; /* Optional: style for links */
+    text-decoration: none; /* Optional: removes underline from links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Optional: adds underline on hover for links */
+}
+
+.interest-tag {
+    display: inline-block;
+    background: #535366; /* Dark background for tags */
+    color: #f0f0f0; /* Light text for tags */
+    padding: 3px 6px; /* Smaller padding */
+    font-size: 0.8em; /* Smaller font size */
+    margin: 2px; /* Adjusted margin */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.interest-tag:hover {
+    background: #6d6d90; /* Lighter background on hover */
+}
+
+.research-interests-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Allows wrapping if the screen is too small */
+}
+
+.research-interests-header h2 {
+  margin-right: 10px; /* Spacing between the heading and the tags */
+}
+
+.interest-tags {
+  display: flex;
+  flex-wrap: wrap; /* Allows tags to wrap to the next line */
+}
+
+.experience-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+h3 {
+    margin-bottom: 0.5em; /* Add space below the heading */
+}
+
+.date-location {
+    white-space: nowrap; /* Prevents wrapping to ensure it stays on the same line */
+    text-align: right; /* Aligns text to the right */
+}
+
+
+Now I need to create a set of courses (course_sql, course_feature_learning,etc...). I can generate the text for the courses but they will be structured by chapter and subchapters, and they might have code blocks and latex blocks. I want to frame the course as a centered column of text, when it gets to a coding or latex block they should seem like a floating box (slightly different color shade) to pop out. And importantly, I want to have a solution to enable the user to navigate the course and see the selection of courses (each would be a different latex file)
+
+Please write a sample course course_sql.html and adjust the css file accordingly.
