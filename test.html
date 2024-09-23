@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Collapsible Sidebar with TOC</title>
     <style>
@@ -129,7 +130,7 @@
         .sidebar-header {
             width: 100%;
             height: 50px;
-            background-color: #18c;
+            background-color: #f4f4f4;
             position: relative;
             z-index: 2;
         }
@@ -137,7 +138,7 @@
         /* Toggle button anchored to the left */
         .sidebar-header .toggle-btn {
             position: absolute;
-            left: 15px;
+            left: 5px;
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
@@ -166,6 +167,10 @@
             padding-left: 6px;
             height: calc(100vh - 125px); /* Adjust height to fit within the viewport */
             overflow-y: auto; /* Enable scrolling for sidebar content */
+        }
+
+        .sidebar-content h2 {
+          margin: 0px;
         }
 
         /* TOC styling with subtle font differences */
@@ -271,8 +276,8 @@
 
         .toggle-btn-content {
             position: fixed;
-            top: 87px;
-            left: 15px;
+            top: 85px;
+            left: 5px;
             cursor: pointer;
             width: 40px;
             height: 40px;
@@ -307,7 +312,164 @@
             padding-top: 20px;
             border-top: 2px solid #ccc;
         }
+
+        /* Code and LaTeX Blocks */
+        .code-block {
+            background: #f7f7f7;
+            border-left: 4px solid #535366;
+            margin: 20px 0;
+            overflow: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .block-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #535366;
+            color: #ffffff;
+            padding: 8px 12px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .code-block .block-header {
+            background-color: #535366;
+        }
+
+        .block-header {
+            background-color: #6d6d90;
+        }
+
+        .copy-button {
+            background-color: transparent;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 0.9em;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .copy-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .copy-button:focus {
+            outline: none;
+        }
+
+        .code-block pre {
+            margin: 0;
+            padding: 10px; /* Reduced padding from 15px to 10px */
+            background: #f7f7f7;
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 0.95em;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            overflow-x: auto;
+            padding-left: 10px; /* Modest left padding */
+        }
+
+        .theorem {
+            border-left: 4px solid #6d6d90;
+            padding-left: 15px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            font-style: italic;
+        }
+
+        .proof {
+            border-left: 4px solid #535366;
+            padding-left: 15px;
+            margin: 20px 0;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            font-style: normal;
+        }
+
+        /* Media Section Styles */
+        /* Centered Images */
+        .centered-image {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .centered-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Grid of Images */
+        .image-grid {
+            display: grid;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        /* Utility Classes for Grid Columns */
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .grid-cols-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        /* GIFs */
+        .gifs {
+            margin: 20px 0;
+        }
+
+        .gifs img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            margin: 20px 0;
+        }
+
+        /* Video Player */
+        .video-player {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .video-player video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
     </style>
+
+    <!-- Prism.js CSS for Syntax Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+
+    <!-- MathJax for LaTeX Rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
 </head>
 <body>
 
@@ -361,7 +523,7 @@
             <!-- Sidebar Header with Toggle Button and Search Icon -->
             <div class="sidebar-header">
                 <button id="toggleButton" class="toggle-btn" onclick="toggleSidebar()">
-                    <img src="icons/sidebar_open_icon.png" alt="Hide sidebar" />
+                    <img src="icons/sidebar_close_icon.png" alt="Hide sidebar" />
                 </button>
             </div>
 
@@ -370,125 +532,82 @@
                 <h2>Table of Contents</h2>
                 <ul>
                     <li class="section">
-                        <a href="#section1" onclick="scrollToSection(event, 'section1')">Section 1</a>
+                        <a onclick="scrollToSection(event, 'lipsum')">Lipsum</a>
                         <ul>
                             <li class="subsection">
-                                <a href="#subsection1-1" onclick="scrollToSection(event, 'subsection1-1')">Subsection 1.1</a>
+                                <a onclick="scrollToSection(event, 'lipsum-1')">1.1 Lipsum</a>
                                 <ul>
                                     <li class="subsubsection">
-                                        <a href="#subsubsection1-1-1" onclick="scrollToSection(event, 'subsubsection1-1-1')">Sub-subsection 1.1.1</a>
+                                        <a onclick="scrollToSection(event, 'lipsum-1-1')">1.1.1 Lipsum</a>
                                     </li>
                                     <li class="subsubsection">
-                                        <a href="#subsubsection1-1-2" onclick="scrollToSection(event, 'subsubsection1-1-2')">Sub-subsection 1.1.2</a>
+                                        <a onclick="scrollToSection(event, 'lipsum-1-2')">1.1.2 Lipsum</a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="subsection">
-                                <a href="#subsection1-2" onclick="scrollToSection(event, 'subsection1-2')">Subsection 1.2</a>
+                                <a onclick="scrollToSection(event, 'lipsum-2')">1.2 Lipsum</a>
                                 <ul>
                                     <li class="subsubsection">
-                                        <a href="#subsubsection1-1-1" onclick="scrollToSection(event, 'subsubsection1-1-1')">Sub-subsection 1.1.1</a>
+                                        <a onclick="scrollToSection(event, 'lipsum-2-1')">1.2.1 Lipsum</a>
                                     </li>
                                     <li class="subsubsection">
-                                        <a href="#subsubsection1-1-2" onclick="scrollToSection(event, 'subsubsection1-1-2')">Sub-subsection 1.1.2</a>
+                                        <a onclick="scrollToSection(event, 'lipsum-2-2')">1.2.2 Lipsum</a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
                     <li class="section">
-                        <a href="#section2" onclick="scrollToSection(event, 'section2')">Section 2</a>
-                    </li>
-                    <!-- Repeat similar structure as needed -->
-                    <li class="section">
-                        <a href="#section1" onclick="scrollToSection(event, 'section1')">Section 1</a>
+                        <a onclick="scrollToSection(event, 'blocks')">Block Demo</a>
                         <ul>
                             <li class="subsection">
-                                <a href="#subsection1-1" onclick="scrollToSection(event, 'subsection1-1')">Subsection 1.1</a>
-                                <ul>
-                                    <li class="subsubsection">
-                                        <a href="#subsubsection1-1-1" onclick="scrollToSection(event, 'subsubsection1-1-1')">Sub-subsection 1.1.1</a>
-                                    </li>
-                                    <li class="subsubsection">
-                                        <a href="#subsubsection1-1-2" onclick="scrollToSection(event, 'subsubsection1-1-2')">Sub-subsection 1.1.2</a>
-                                    </li>
-                                </ul>
+                                <a onclick="scrollToSection(event, 'bash')">Bash</a>
                             </li>
                             <li class="subsection">
-                                <a href="#subsection1-2" onclick="scrollToSection(event, 'subsection1-2')">Subsection 1.2</a>
-                                <ul>
-                                    <li class="subsubsection">
-                                        <a href="#subsubsection1-1-1" onclick="scrollToSection(event, 'subsubsection1-1-1')">Sub-subsection 1.1.1</a>
-                                    </li>
-                                    <li class="subsubsection">
-                                        <a href="#subsubsection1-1-2" onclick="scrollToSection(event, 'subsubsection1-1-2')">Sub-subsection 1.1.2</a>
-                                    </li>
-                                </ul>
+                                <a onclick="scrollToSection(event, 'python')">Python</a>
+                            </li>
+                            <li class="subsection">
+                                <a onclick="scrollToSection(event, 'sql')">SQL</a>
+                            </li>
+                            <li class="subsection">
+                                <a onclick="scrollToSection(event, 'html')">HTML</a>
                             </li>
                         </ul>
                     </li>
                     <li class="section">
-                        <a href="#section2" onclick="scrollToSection(event, 'section2')">Section 2</a>
-                    </li>
-                    <li class="section">
-                        <a href="#section1" onclick="scrollToSection(event, 'section1')">Section 1</a>
+                        <a onclick="scrollToSection(event, 'latex')">LaTex Demo</a>
                         <ul>
                             <li class="subsection">
-                                <a href="#subsection1-1" onclick="scrollToSection(event, 'subsection1-1')">Subsection 1.1</a>
-                                <ul>
-                                    <li class="subsubsection">
-                                        <a href="#subsubsection1-1-1" onclick="scrollToSection(event, 'subsubsection1-1-1')">Sub-subsection 1.1.1</a>
-                                    </li>
-                                    <li class="subsubsection">
-                                        <a href="#subsubsection1-1-2" onclick="scrollToSection(event, 'subsubsection1-1-2')">Sub-subsection 1.1.2</a>
-                                    </li>
-                                </ul>
+                                <a onclick="scrollToSection(event, 'math')">Simple</a>
                             </li>
                             <li class="subsection">
-                                <a href="#subsection1-2" onclick="scrollToSection(event, 'subsection1-2')">Subsection 1.2</a>
-                                <ul>
-                                    <li class="subsubsection">
-                                        <a href="#subsubsection1-1-1" onclick="scrollToSection(event, 'subsubsection1-1-1')">Sub-subsection 1.1.1</a>
-                                    </li>
-                                    <li class="subsubsection">
-                                        <a href="#subsubsection1-1-2" onclick="scrollToSection(event, 'subsubsection1-1-2')">Sub-subsection 1.1.2</a>
-                                    </li>
-                                </ul>
+                                <a onclick="scrollToSection(event, 'align')">Align</a>
+                            </li>
+                            <li class="subsection">
+                                <a onclick="scrollToSection(event, 'thm')">Theorem</a>
+                            </li>
+                            <li class="subsection">
+                                <a onclick="scrollToSection(event, 'prf')">Proof</a>
                             </li>
                         </ul>
                     </li>
                     <li class="section">
-                        <a href="#section2" onclick="scrollToSection(event, 'section2')">Section 2</a>
-                    </li>
-                    <li class="section">
-                        <a href="#section1" onclick="scrollToSection(event, 'section1')">Section 1</a>
+                        <a onclick="scrollToSection(event, 'media')">Media</a>
                         <ul>
                             <li class="subsection">
-                                <a href="#subsection1-1" onclick="scrollToSection(event, 'subsection1-1')">Subsection 1.1</a>
-                                <ul>
-                                    <li class="subsubsection">
-                                        <a href="#subsubsection1-1-1" onclick="scrollToSection(event, 'subsubsection1-1-1')">Sub-subsection 1.1.1</a>
-                                    </li>
-                                    <li class="subsubsection">
-                                        <a href="#subsubsection1-1-2" onclick="scrollToSection(event, 'subsubsection1-1-2')">Sub-subsection 1.1.2</a>
-                                    </li>
-                                </ul>
+                                <a onclick="scrollToSection(event, 'image')">Images</a>
                             </li>
                             <li class="subsection">
-                                <a href="#subsection1-2" onclick="scrollToSection(event, 'subsection1-2')">Subsection 1.2</a>
-                                <ul>
-                                    <li class="subsubsection">
-                                        <a href="#subsubsection1-1-1" onclick="scrollToSection(event, 'subsubsection1-1-1')">Sub-subsection 1.1.1</a>
-                                    </li>
-                                    <li class="subsubsection">
-                                        <a href="#subsubsection1-1-2" onclick="scrollToSection(event, 'subsubsection1-1-2')">Sub-subsection 1.1.2</a>
-                                    </li>
-                                </ul>
+                                <a onclick="scrollToSection(event, 'gif')">Gifs</a>
+                            </li>
+                            <li class="subsection">
+                                <a onclick="scrollToSection(event, 'audio')">Audio</a>
+                            </li>
+                            <li class="subsection">
+                                <a onclick="scrollToSection(event, 'video')">Video</a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="section">
-                        <a href="#section2" onclick="scrollToSection(event, 'section2')">Section 2</a>
                     </li>
                 </ul>
             </div>
@@ -499,26 +618,198 @@
             <h2>Content Area</h2>
 
             <!-- Sections linked to the sidebar -->
-            <section id="section1">
+            <section id="lipsum">
                 <h3>Section 1</h3>
                 <p>This is the content for section 1.</p>
 
-                <h4 id="subsection1-1">Subsection 1.1</h4>
+                <h4 id="lipsum-1">Subsection 1.1</h4>
                 <p>This is content for subsection 1.1.</p>
 
-                <h5 id="subsubsection1-1-1">Sub-subsection 1.1.1</h5>
+                <h5 id="lipsum-1-1">Sub-subsection 1.1.1</h5>
                 <p>This is content for sub-subsection 1.1.1.</p>
 
-                <h5 id="subsubsection1-1-2">Sub-subsection 1.1.2</h5>
+                <h5 id="lipsum-1-2">Sub-subsection 1.1.2</h5>
                 <p>This is content for sub-subsection 1.1.2.</p>
 
-                <h4 id="subsection1-2">Subsection 1.2</h4>
+                <h4 id="lipsum-2">Subsection 1.2</h4>
                 <p>This is content for subsection 1.2.</p>
+
+                <h5 id="lipsum-2-1">Sub-subsection 1.2.1</h5>
+                <p>This is content for sub-subsection 1.2.1.</p>
+
+                <h5 id="lipsum-2-2">Sub-subsection 1.2.2</h5>
+                <p>This is content for sub-subsection 1.2.2.</p>
             </section>
 
-            <section id="section2">
-                <h3>Section 2</h3>
+            <section id="blocks">
+                <h3>Code Blocks</h3>
                 <p>This is the content for section 2.</p>
+
+                <h4 id="bash">Bash</h4>
+                <div class="code-block">
+                    <div class="block-header">
+                        <span class="block-type">Bash</span>
+                        <button class="copy-button" data-clipboard-target="#code-1" aria-label="Copy code">Copy</button>
+                    </div>
+                    <pre><code id="code-1" class="language-bash">pip install --upgrade pip
+pip install numpy
+                    </code></pre>
+                </div>
+
+                <h4 id="python">Python</h4>
+                <div class="code-block">
+                    <div class="block-header">
+                        <span class="block-type">Python</span>
+                        <button class="copy-button" data-clipboard-target="#code-2" aria-label="Copy code">Copy</button>
+                    </div>
+                    <pre><code id="code-2" class="language-python">import numpy as np
+
+def add(a, b):
+    return a + b
+
+print(add(3, 2))
+# Result should be 5
+                </code></pre>
+                </div>
+
+                <h4 id="sql">SQL</h4>
+                <div class="code-block">
+                    <div class="block-header">
+                        <span class="block-type">SQL</span>
+                        <button class="copy-button" data-clipboard-target="#code-3" aria-label="Copy code">Copy</button>
+                    </div>
+                    <pre><code id="code-3" class="language-sql">SELECT column1, column2
+FROM table_name;
+                    </code></pre>
+                </div>
+
+                <h4 id="html">HTML</h4>
+                <div class="code-block">
+                    <div class="block-header">
+                        <span class="block-type">HTML</span>
+                        <button class="copy-button" data-clipboard-target="#code-4" aria-label="Copy code">Copy</button>
+                    </div>
+                    <pre><code id="code-4" class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Sample HTML&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                </code></pre>
+                </div>
+            </section>
+
+            <section id="latex">
+                <h3>LaTeX Demo</h3>
+
+                <!-- Simple LaTeX Examples -->
+                <h4 id="math">Simple</h4>
+                <p>Here is an example of an inline equation: Euler's identity is given by \( e^{i\pi} + 1 = 0 \).</p>
+                <p>And here is a display equation:</p>
+                \[
+                \int_{a}^{b} f(x) \, dx = F(b) - F(a)
+                \]
+
+                <!-- Align Environment Example -->
+                <h4 id="align">Align Example</h4>
+                <p>Here is an example of aligned equations using the <code>align</code> environment:</p>
+                \[
+                \begin{align}
+                E &= mc^2 \\
+                F &= ma \\
+                \nabla \cdot \mathbf{E} &= \frac{\rho}{\varepsilon_0}
+                \end{align}
+                \]
+
+                <!-- Theorem Example -->
+                <h4 id="thm">Theorem</h4>
+                <div class="theorem">
+                    <p><strong>Theorem (Pythagorean Theorem):</strong> In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides.</p>
+                    \[
+                    a^2 + b^2 = c^2
+                    \]
+                </div>
+
+                <!-- Proof Example -->
+                <h4 id="prf">Proof</h4>
+                <div class="proof">
+                    <p><strong>Proof:</strong></p>
+                    <p>Consider a right-angled triangle with sides of length \( a \), \( b \), and hypotenuse \( c \).</p>
+                    <p>According to the Pythagorean theorem:</p>
+                    \[
+                    a^2 + b^2 = c^2
+                    \]
+                    <p>This concludes the proof.</p>
+                </div>
+            </section>
+
+            <section id="media">
+                <h3>Media</h3>
+
+                <!-- Centered Image Example -->
+                <h4 id="image">Centered Images</h4>
+                <div class="centered-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Centered Example Image">
+                </div>
+
+                <!-- Grid of Images Example: 1x3 Grid -->
+                <h4 id="grid-images-1x3">1x3 Grid</h4>
+                <div class="image-grid grid-cols-3">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 1">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 2">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 3">
+                </div>
+
+                <!-- Grid of Images Example: 2x1 Grid -->
+                <h4 id="grid-images-2x1">2x1 Grid</h4>
+                <div class="image-grid grid-cols-1">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 1">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 2">
+                </div>
+
+                <!-- Grid of Images Example: 3x4 Grid -->
+                <h4 id="grid-images-3x4">3x4 Grid</h4>
+                <div class="image-grid grid-cols-4">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 1">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 2">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 3">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 4">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 5">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 6">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 7">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 8">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 9">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 10">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 11">
+                    <img src="https://via.placeholder.com/150" alt="Grid Image 12">
+                </div>
+
+                <!-- GIFs Example -->
+                <h4 id="gif">GIFs</h4>
+                <div class="gifs">
+                    <img src="https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif" alt="Example GIF">
+                </div>
+
+                <!-- Audio Player Example -->
+                <h4 id="audio">Audio Player</h4>
+                <div class="audio-player">
+                    <audio controls>
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <!-- Video Player Example -->
+                <h4 id="video">Video Player</h4>
+                <div class="video-player">
+                    <video controls width="600">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </section>
 
             <!-- Toggle Button inside the content (only appears when sidebar is hidden) -->
@@ -527,6 +818,17 @@
             </button>
         </div>
     </div>
+    <!-- External JavaScript -->
+    <!-- Clipboard.js Library -->
+    <!-- After -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+
+    <!-- Prism.js JS for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
 
     <script>
         function toggleSidebar() {
@@ -552,24 +854,57 @@
         }
 
         function scrollToSection(event, sectionId) {
-                event.preventDefault(); // Prevent the default anchor behavior
+            event.preventDefault(); // Prevent the default anchor behavior
 
-                var section = document.getElementById(sectionId);
-                var content = document.getElementById("content");
-                var header = document.querySelector(".header");
+            var section = document.getElementById(sectionId);
+            var content = document.getElementById("content");
+            var header = document.querySelector(".header");
 
-                // Get the height of the header
-                var headerHeight = header.offsetHeight;
+            // Get the height of the header
+            var headerHeight = header.offsetHeight;
 
-                // Calculate the position of the section relative to the content div
-                var sectionPosition = section.getBoundingClientRect().top + content.scrollTop;
+            // Calculate the position of the section relative to the content div
+            var sectionPosition = section.getBoundingClientRect().top + content.scrollTop;
 
-                // Scroll to the section position minus the header height
-                content.scrollTo({
-                    top: sectionPosition - headerHeight,
-                    behavior: 'smooth'
-                });
-            }
+            // Scroll to the section position minus the header height
+            content.scrollTo({
+                top: sectionPosition - headerHeight,
+                behavior: 'smooth'
+            });
+        }
+
+        /* Initialize ClipboardJS for Copy Buttons */
+        document.addEventListener('DOMContentLoaded', function () {
+            var clipboard = new ClipboardJS('.copy-button', {
+                target: function(trigger) {
+                    var targetSelector = trigger.getAttribute('data-clipboard-target');
+                    return document.querySelector(targetSelector);
+                }
+            });
+
+            // Success Feedback
+            clipboard.on('success', function(e) {
+                var originalText = e.trigger.textContent;
+                e.trigger.textContent = 'Copied!';
+                e.trigger.disabled = true;
+                setTimeout(function() {
+                    e.trigger.textContent = 'Copy';
+                    e.trigger.disabled = false;
+                }, 2000);
+                e.clearSelection();
+            });
+
+            // Error Feedback
+            clipboard.on('error', function(e) {
+                var originalText = e.trigger.textContent;
+                e.trigger.textContent = 'Error';
+                e.trigger.disabled = true;
+                setTimeout(function() {
+                    e.trigger.textContent = 'Copy';
+                    e.trigger.disabled = false;
+                }, 2000);
+            });
+        });
 
     </script>
 

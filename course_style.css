@@ -1,298 +1,302 @@
-/* course_style.css */
-
-/* Reset and Basic Styles */
-* {
-    box-sizing: border-box;
-}
-
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    color: #101010;
-    overflow: hidden; /* Prevents the whole page from scrolling */
+    scroll-behavior: smooth; /* Ensures smooth scrolling */
+    overflow: hidden;
 }
 
-/* Top Banner Styles */
-.top-banner {
-    width: 100%;
-    background-color: #535366;
-    color: #ffffff;
-    padding: 10px 20px;
+.header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 4; /* Ensures the banner is above all other elements */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    align-items: center;
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky; /* Make the header sticky */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure it stays above other content */
+    height: 60px; /* Set a fixed height */
 }
 
-.banner-content {
+.header .profile-pic {
     display: flex;
     align-items: center;
+    margin-right: 40px; /* Added margin to increase space between the profile pic and the links */
 }
 
-.banner-logo {
+.profile-pic img {
+    border-radius: 50%;
     width: 50px;
     height: 50px;
-    margin-right: 15px;
-    border-radius: 5px;
+    object-fit: cover;
 }
 
-.banner-nav a {
-    margin-left: 15px;
-}
-
-.banner-nav img {
-    width: 24px;
-    height: 24px;
-    transition: opacity 0.3s;
-}
-
-.banner-nav img:hover {
-    opacity: 0.8;
-}
-
-/* Container for Sidebar and Content */
-.container {
+.nav-links {
     display: flex;
-    height: 100vh; /* Full viewport height */
-    position: relative; /* Ensures proper layering of sidebar and content */
-    padding-top: 70px; /* Space for the fixed top banner */
+    gap: 30px; /* Reduced gap to lessen space between profile and menu */
+    position: relative;
 }
 
-/* Sidebar Styles */
-.sidebar {
-    width: 250px; /* Fixed sidebar width */
-    height: calc(100vh - 70px); /* Adjusted height considering the top banner */
-    background-color: #ffffff; /* Sidebar background */
-    padding: 20px;
-    box-sizing: border-box;
-    position: relative; /* Relative positioning for toggle button */
-    z-index: 2; /* Keeps the sidebar behind the content when expanded */
-    transition: transform 0.3s ease-in-out; /* Smooth transition */
-    overflow-y: auto;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar li {
-    margin-bottom: 10px;
-}
-
-.sidebar a {
-    color: inherit; /* Inherits text color */
-    text-decoration: none; /* Removes underline */
-    cursor: pointer;
-}
-
-.sidebar a:hover {
-    text-decoration: underline; /* Optional: underline on hover for better UX */
-}
-
-/* Toggle Button inside the Sidebar */
-.toggle-button {
-    position: absolute;
-    top: 10px;
-    left: 10px; /* Aligns to the top-left within the sidebar */
-    cursor: pointer;
-    background-color: #535366;
-    color: #ffffff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    font-size: 0.9em;
-    transition: background-color 0.3s;
-}
-
-.toggle-button:hover {
-    background-color: #6d6d90;
-}
-
-/* Content Area Styles */
-.content {
-    height: calc(100vh - 70px); /* Adjusted height considering the top banner */
-    overflow-y: auto;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: #ddd; /* Content background */
-    transition: left 0.3s ease, width 0.3s ease; /* Smooth transition for content */
-    position: absolute;
-    top: 0;
-    left: 250px; /* Default position when sidebar is visible */
-    width: calc(100% - 250px); /* Content width adjusted based on sidebar */
-    z-index: 1; /* Content sits behind the top banner */
-}
-
-.content.expanded {
-    left: 0; /* Move content to cover the entire screen */
-    width: 100%; /* Content takes the full width */
-}
-
-/* Toggle Button inside the Content */
-.toggle-button-content {
-    position: absolute;
-    top: 10px;
-    left: 10px; /* Aligns to the top-left within the content */
-    cursor: pointer;
-    background-color: #535366;
-    color: #ffffff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    font-size: 0.9em;
-    transition: background-color 0.3s;
-    display: none; /* Hidden by default */
-    z-index: 3; /* Ensures the button is above the content */
-}
-
-.toggle-button-content:hover {
-    background-color: #6d6d90;
-}
-
-/* Show the content toggle button when sidebar is collapsed */
-.content.expanded + .toggle-button-content {
-    display: block;
-}
-
-/* Collapsible Sections */
-.collapsible-section {
-    margin-bottom: 20px;
-}
-
-.collapsible-button {
-    background-color: #6d6d90;
-    color: #ffffff;
-    cursor: pointer;
-    padding: 10px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 1em;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.collapsible-button:hover {
-    background-color: #535366;
-}
-
-.collapsible-content {
-    display: none;
-    padding: 10px 15px;
-    background-color: #f9f9f9;
-    border-left: 3px solid #535366;
-    border-right: 3px solid #535366;
-    border-bottom: 3px solid #535366;
-    border-radius: 0 0 5px 5px;
-}
-
-/* Code and LaTeX Blocks */
-.code-block, .latex-block {
-    background: #f7f7f7;
-    border-left: 4px solid #535366;
-    margin: 20px 0;
-    overflow: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.block-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #535366;
-    color: #ffffff;
-    padding: 8px 12px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+.nav-links a {
+    text-decoration: none;
+    color: #333;
     font-weight: bold;
-    font-size: 0.9em;
+    position: relative;
 }
 
-.code-block .block-header {
-    background-color: #535366;
-}
-
-.latex-block .block-header {
-    background-color: #6d6d90;
-}
-
-.copy-button {
-    background-color: transparent;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
-    font-size: 0.9em;
-    padding: 5px 10px;
-    border-radius: 3px;
-    transition: background-color 0.3s;
-}
-
-.copy-button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.copy-button:focus {
-    outline: none;
-}
-
-.code-block pre, .latex-block pre {
-    margin: 0;
-    padding: 15px;
-    background: #f7f7f7;
-    font-family: Consolas, 'Courier New', monospace;
-    font-size: 0.95em;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    overflow-x: auto;
-}
-
-.math-equation {
-    margin: 15px;
-    text-align: center;
-}
-
-/* Responsive Design */
-@media (max-width: 800px) {
-    .sidebar {
-        width: 200px;
-    }
-
-    .content {
-        left: 200px;
-        width: calc(100% - 200px);
-    }
-
-    .content.expanded {
-        left: 0;
-        width: 100%;
-    }
-}
-
-@media (max-width: 500px) {
-    .toggle-button, .toggle-button-content {
-        padding: 3px 7px;
-        font-size: 0.8em;
-    }
-}
-
-/* Active TOC Link Styling */
-.sidebar a.active {
-    color: #6d6d90;
+.nav-links a:hover {
     text-decoration: underline;
 }
 
-/* Focus Styles for Accessibility */
-.toggle-button:focus, .toggle-button-content:focus, .copy-button:focus, .collapsible-button:focus {
-    outline: 2px solid #6d6d90;
-    outline-offset: 2px;
+/* Dropdown Styles */
+.courses-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.courses-dropdown-content {
+    min-width: 200px; /* Ensures dropdown is wide enough */
+    width: auto;      /* Allows dropdown to expand based on content */
+    white-space: nowrap; /* Prevents text from wrapping */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f4f4f4;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1001; /* Ensure dropdown is above other elements */
+    padding: 10px;
+}
+
+.courses-dropdown-content a {
+    color: #333;
+    padding: 8px 10px;
+    text-decoration: none;
+    display: block;
+    font-weight: normal;
+}
+
+.courses-dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.courses-dropdown:hover .courses-dropdown-content {
+    display: block;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    text-decoration: none;
+}
+
+.social-icons img {
+    width: 25px;
+    height: 25px;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.container {
+    display: flex;
+    height: calc(100vh - 75px); /* Full viewport height minus header */
+    width: 100%;
+    position: relative;
+}
+
+.sidebar {
+    width: 300px; /* Fixed sidebar width */
+    height: 100%;
+    background-color: #f4f4f4; /* Sidebar background */
+    box-sizing: border-box;
+    position: absolute; /* Keeps sidebar in place */
+    z-index: 1; /* Keeps the sidebar behind the content when expanded */
+}
+
+.sidebar-header {
+    width: 100%;
+    height: 50px;
+    background-color: #18c;
+    position: relative;
+    z-index: 2;
+}
+
+/* Toggle button anchored to the left */
+.sidebar-header .toggle-btn {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.sidebar-header .toggle-btn:hover {
+    background-color: #ccc;
+    border-color: #999;
+}
+
+.toggle-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+.sidebar-content {
+    padding-left: 6px;
+    height: calc(100vh - 125px); /* Adjust height to fit within the viewport */
+    overflow-y: auto; /* Enable scrolling for sidebar content */
+}
+
+/* TOC styling with subtle font differences */
+.sidebar-content ul {
+    list-style: none;
+    padding-left: 0;
+    position: relative;
+}
+
+/* Sections (Main headings) */
+.sidebar-content ul li.section {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 2px; /* Indent sections */
+    position: relative;
+    padding-left: 8px; /* Space for vertical line */
+}
+
+/* Subsections (Level 2 headings) */
+.sidebar-content ul li.subsection {
+    font-size: 16px;
+    margin-left: 2px; /* Indent subsections */
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 8px; /* Space for vertical line */
+}
+
+/* Sub-subsections (Level 3 headings) */
+.sidebar-content ul li.subsubsection {
+    font-size: 14px;
+    margin-left: 2px; /* Further indent sub-subsections */
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 8px; /* Space for vertical line */
+}
+
+/* Vertical line for sections and subsections with children */
+.sidebar-content ul li.section > ul:before,
+.sidebar-content ul li.subsection > ul:before {
+    content: '';
+    position: absolute;
+    left: 5px; /* Align the line to the left edge */
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: #ccc; /* Line color */
+}
+
+/* Make links in the TOC look like normal text */
+.sidebar-content ul li a {
+    color: black; /* Change color to black */
+    text-decoration: none; /* Remove underline */
+    cursor: pointer; /* Keep the pointer for clarity */
+    font-weight: normal; /* Ensure all links are not bold by default */
+    display: block; /* Make the entire area clickable */
+    padding: 5px 10px; /* Add padding for better spacing */
+    border-radius: 6px; /* Rounded corners for hover box */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Only make main sections bold */
+.sidebar-content ul li.section a {
+    font-weight: bold; /* Bold only for main sections */
+}
+
+/* Hover effect for TOC links */
+.sidebar-content ul li a:hover {
+    background-color: #e0e0e0; /* Light grey background on hover */
+    text-decoration: none; /* Remove underline if any */
+}
+
+/* Optional: Adjust padding based on hierarchy */
+.sidebar-content ul li.subsection > a {
+    padding-left: 20px; /* Indent for subsections */
+}
+
+.sidebar-content ul li.subsubsection > a {
+    padding-left: 30px; /* Further indent for sub-subsections */
+}
+
+.content {
+    height: 100%;
+    overflow-y: auto;
+    padding-left: calc((100% - 300px - 9/20*100%)/2);
+    padding-right:calc((100% - 300px - 9/20*100%)/2);
+    padding-top: 50px;
+    box-sizing: border-box;
+    background-color: #ddd;
+    transition: left 0.3s ease, width 0.3s ease, padding-left 0.3s ease, padding-right 0.3s ease;
+    position: absolute;
+    left: 300px;
+    width: calc(100% - 300px);
+    z-index: 1;
+}
+
+.content.expanded {
+    left: 0;
+    width: 100%;
+    padding-left: calc((100% - 9/20*100%)/2);
+    padding-right:calc((100% - 9/20*100%)/2);
+}
+
+.toggle-btn-content {
+    position: fixed;
+    top: 87px;
+    left: 15px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 0;
+    z-index: 3;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.toggle-btn-content:hover {
+    background-color: #ccc; /* Contrasting grey background on hover */
+    border-color: #999; /* Optional: Slight border color change on hover for better visibility */
+}
+
+.toggle-btn-content img {
+    width: 24px;
+    height: 24px;
+}
+
+h3, h4, h5 {
+    scroll-margin-top: 80px; /* Adjust this value based on your header's height */
+}
+
+/* Style for sections */
+section {
+    margin-bottom: 100vh;
+    padding-top: 20px;
+    border-top: 2px solid #ccc;
 }
