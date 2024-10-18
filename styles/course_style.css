@@ -1,0 +1,298 @@
+/* course_style.css */
+
+/* Reset and Basic Styles */
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #101010;
+    overflow: hidden; /* Prevents the whole page from scrolling */
+}
+
+/* Top Banner Styles */
+.top-banner {
+    width: 100%;
+    background-color: #535366;
+    color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4; /* Ensures the banner is above all other elements */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+}
+
+.banner-logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.banner-nav a {
+    margin-left: 15px;
+}
+
+.banner-nav img {
+    width: 24px;
+    height: 24px;
+    transition: opacity 0.3s;
+}
+
+.banner-nav img:hover {
+    opacity: 0.8;
+}
+
+/* Container for Sidebar and Content */
+.container {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+    position: relative; /* Ensures proper layering of sidebar and content */
+    padding-top: 70px; /* Space for the fixed top banner */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px; /* Fixed sidebar width */
+    height: calc(100vh - 70px); /* Adjusted height considering the top banner */
+    background-color: #ffffff; /* Sidebar background */
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative; /* Relative positioning for toggle button */
+    z-index: 2; /* Keeps the sidebar behind the content when expanded */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+    overflow-y: auto;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    color: inherit; /* Inherits text color */
+    text-decoration: none; /* Removes underline */
+    cursor: pointer;
+}
+
+.sidebar a:hover {
+    text-decoration: underline; /* Optional: underline on hover for better UX */
+}
+
+/* Toggle Button inside the Sidebar */
+.toggle-button {
+    position: absolute;
+    top: 10px;
+    left: 10px; /* Aligns to the top-left within the sidebar */
+    cursor: pointer;
+    background-color: #535366;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.toggle-button:hover {
+    background-color: #6d6d90;
+}
+
+/* Content Area Styles */
+.content {
+    height: calc(100vh - 70px); /* Adjusted height considering the top banner */
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #ddd; /* Content background */
+    transition: left 0.3s ease, width 0.3s ease; /* Smooth transition for content */
+    position: absolute;
+    top: 0;
+    left: 250px; /* Default position when sidebar is visible */
+    width: calc(100% - 250px); /* Content width adjusted based on sidebar */
+    z-index: 1; /* Content sits behind the top banner */
+}
+
+.content.expanded {
+    left: 0; /* Move content to cover the entire screen */
+    width: 100%; /* Content takes the full width */
+}
+
+/* Toggle Button inside the Content */
+.toggle-button-content {
+    position: absolute;
+    top: 10px;
+    left: 10px; /* Aligns to the top-left within the content */
+    cursor: pointer;
+    background-color: #535366;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+    display: none; /* Hidden by default */
+    z-index: 3; /* Ensures the button is above the content */
+}
+
+.toggle-button-content:hover {
+    background-color: #6d6d90;
+}
+
+/* Show the content toggle button when sidebar is collapsed */
+.content.expanded + .toggle-button-content {
+    display: block;
+}
+
+/* Collapsible Sections */
+.collapsible-section {
+    margin-bottom: 20px;
+}
+
+.collapsible-button {
+    background-color: #6d6d90;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.collapsible-button:hover {
+    background-color: #535366;
+}
+
+.collapsible-content {
+    display: none;
+    padding: 10px 15px;
+    background-color: #f9f9f9;
+    border-left: 3px solid #535366;
+    border-right: 3px solid #535366;
+    border-bottom: 3px solid #535366;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Code and LaTeX Blocks */
+.code-block, .latex-block {
+    background: #f7f7f7;
+    border-left: 4px solid #535366;
+    margin: 20px 0;
+    overflow: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #535366;
+    color: #ffffff;
+    padding: 8px 12px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.code-block .block-header {
+    background-color: #535366;
+}
+
+.latex-block .block-header {
+    background-color: #6d6d90;
+}
+
+.copy-button {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.copy-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.copy-button:focus {
+    outline: none;
+}
+
+.code-block pre, .latex-block pre {
+    margin: 0;
+    padding: 15px;
+    background: #f7f7f7;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 0.95em;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow-x: auto;
+}
+
+.math-equation {
+    margin: 15px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .content {
+        left: 200px;
+        width: calc(100% - 200px);
+    }
+
+    .content.expanded {
+        left: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .toggle-button, .toggle-button-content {
+        padding: 3px 7px;
+        font-size: 0.8em;
+    }
+}
+
+/* Active TOC Link Styling */
+.sidebar a.active {
+    color: #6d6d90;
+    text-decoration: underline;
+}
+
+/* Focus Styles for Accessibility */
+.toggle-button:focus, .toggle-button-content:focus, .copy-button:focus, .collapsible-button:focus {
+    outline: 2px solid #6d6d90;
+    outline-offset: 2px;
+}
