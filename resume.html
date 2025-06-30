@@ -1,164 +1,617 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Alexandre Kaiser - Motivation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexandre Kaiser - Resume</title>
     <link rel="stylesheet" href="styles/main_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <div class="header">
-      <!-- Profile picture and navigation -->
-      <div class="profile-pic">
-          <a href="https://www.instagram.com/a6x6kaiser/" target="_blank">
-              <img src="icons/profile_pic.jpg" alt="Profile Picture">
-          </a>
-      </div>
-      <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="resume.html">Resume</a>
-          <!-- Dropdown container for courses -->
-          <div class="courses-dropdown">
-              <a href="courses.html">Courses</a>
-              <div class="courses-dropdown-content">
-                  <a href="course1.html">Course 1</a>
-                  <a href="course2.html">Course 2</a>
-                  <a href="course3.html">Course 3</a>
-                  <a href="course4.html">Course 4</a>
-              </div>
-          </div>
-      </div>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="icons/profile_pic.jpg" alt="Alexandre Kaiser" class="nav-profile-pic">
+                <span class="nav-name">Alexandre Kaiser</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#experience" class="nav-link">Experience</a>
+                <a href="index.html#research" class="nav-link">Research</a>
+                <a href="AlexandreKaiser_Resume.pdf" class="nav-link active" target="_blank">Resume</a>
+                <div class="nav-dropdown">
+                    <a href="#projects" class="nav-link">Projects <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="course_demo.html">Course Demos</a>
+                        <a href="course_sql.html">SQL Course</a>
+                        <a href="course_feature_learning_v1.html">Feature Learning</a>
+                    </div>
+                </div>
+            </div>
 
-      <div class="spacer"></div>
+            <!-- Social Links -->
+            <div class="nav-social">
+                <a href="https://github.com/a6kaiser" target="_blank" class="social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:amjkaiser@gmail.com" class="social-link" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/alexandre-k-823639b6/" target="_blank" class="social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://x.com/amjkaiser" target="_blank" class="social-link" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://scholar.google.com/citations?hl=en&user=axyxBscAAAAJ" target="_blank" class="social-link" title="Google Scholar">
+                    <i class="fas fa-graduation-cap"></i>
+                </a>
+            </div>
 
-      <!-- Social media icons -->
-      <div class="social-icons">
-          <a href="https://github.com/a6kaiser" target="_blank">
-              <img src="icons/github_icon.png" alt="GitHub">
-          </a>
-          <a href="mailto:amjkaiser@gmail.com">
-              <img src="icons/gmail_icon.png" alt="Gmail">
-          </a>
-          <a href="https://www.linkedin.com/in/alexandre-k-823639b6/" target="_blank">
-              <img src="icons/linkedin_icon.png" alt="LinkedIn">
-          </a>
-          <a href="https://x.com/amjkaiser" target="_blank">
-              <img src="icons/twitter_icon.png" alt="Twitter">
-          </a>
-          <a href="https://scholar.google.com/citations?hl=en&user=axyxBscAAAAJ" target="_blank">
-              <img src="icons/scholar_icon.png" alt="Google Scholar">
-          </a>
-      </div>
-  </div>
-  <main>
-    <h2>EDUCATION</h2>
-      <div class="experience-item">
-        <h3>New York University – Courant Institute of Mathematical Sciences</h3>
-        <span class="date-location">NY, NY 2022-2024<span>
-      </div>
-      <p>Master of Science in <b>Computer Science</b></p>
-      <p>Relevant Courses: Foundations of Machine Learning, Deep Learning Theory, Fundamental Algorithms, Large Language and Vision Models, Machine Learning and Statistical Inference, Computer Vision</p>
+            <!-- Mobile Menu Toggle -->
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-      <div class="experience-item">
-        <h3>Northwestern University</h3>
-        <span class="date-location">Evanston, IL, 2018-2022</span>
-      </div>
-      <p>Bachelor of Science in <b>Applied Mathematics</b></p>
-      <p>Major Concentration in Artificial Intelligence and Machine Learning and Minor in Economics<br>
-      Kellogg Certificate Program for Undergraduates, Financial Economics</p>
-      <p>Relevant Courses: Partial Differential Equations, Linear Algebra, Discrete Mathematics, Numerical Methods, Principles of Finance, Econometrics, Financial Derivatives, Statistics, Probability, Game Theory, Machine Learning, Natural Language Processing, Data Structures and Algorithms</p>
+    <!-- Resume Header -->
+    <section class="resume-header">
+        <div class="container">
+            <div class="resume-intro">
+                <h1 class="resume-title">Alexandre Kaiser</h1>
+                <p class="resume-subtitle">Lead Machine Learning Engineer & Head of Insights</p>
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> 224-509-0852</span>
+                    <span><i class="fas fa-envelope"></i> amjkaiser@gmail.com</span>
+                </div>
+                <div class="resume-actions">
+                    <a href="AlexandreKaiser_Resume.pdf" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                    <a href="mailto:amjkaiser@gmail.com" class="btn btn-outline">
+                        <i class="fas fa-envelope"></i> Contact Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <h2>CORE SKILLS</h2>
-      <ul>
-        <li>Programming: Proficient in Python, MATLAB, C++, C#, R, Scheme, SQL, SML, Prolog, and HTML</li>
-        <li>Mathematics: Perfect scores in SAT Math and GRE Quantitative, 1st place Math Olympiad, Créteil, France, 2017</li>
-        <li>Spoken languages: English (native), French (native), Spanish (basic)</li>
-      </ul>
+    <!-- Resume Content -->
+    <main class="resume-content">
+        <div class="container">
+            
+            <!-- Experience Section -->
+            <section class="resume-section">
+                <h2 class="section-title">
+                    <i class="fas fa-briefcase"></i>
+                    Experience
+                </h2>
 
-    <h2>WORK EXPERIENCE</h2>
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div class="resume-item-title">
+                            <h3>Lead Machine Learning Engineer & Head of Insights</h3>
+                            <p class="institution">GatherGov</p>
+                        </div>
+                        <div class="resume-item-meta">
+                            <span class="date">Dec 2024 – Present</span>
+                        </div>
+                    </div>
+                    <div class="resume-item-content">
+                        <ul>
+                            <li>Lead the full lifecycle of the company's ML-powered insights, from strategic planning to hands-on development, to deliver high-value intelligence for our clients</li>
+                            <li>Architect, build, and maintain a modular suite of AI tools that ingests 30,000+ hours of unstructured transcripts and 20,000+ pdfs monthly, using state-of-the-art models and agentic workflows to surface actionable intelligence</li>
+                            <li>Define and execute the ML strategy by prototyping new architectures, engineering new features, benchmarking models, and building scalable pipelines designed for easy adaptation across new products and industry verticals</li>
+                            <li>Design and implement custom analytics pipelines to uncover high-value trends and opportunities within source data</li>
+                            <li>Extract, craft, and publish marketable insights on social media, driving brand engagement and inbound interest</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <div class="experience-item">
-    <h3>Tutor for <a href="https://cs.nyu.edu/courses/summer13/CSCI-GA.1170-001/">Fundamental Algorithms</a> - NYU Courant, Ernest Davis</h3>
-    <span class="date-location">NY, NY, Sept-Dec 2023</span>
-    </div>
-    <ul>
-        <li>Personalized instruction to enhance students’ understanding of advanced algorithmic concepts</li>
-        <li>Facilitated critical thinking and problem solving by framing the algorithmic decision within specific problems</li>
-    </ul>
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div class="resume-item-title">
+                            <h3>Researcher</h3>
+                            <p class="institution">NYU Courant - Arthur Jacot</p>
+                        </div>
+                        <div class="resume-item-meta">
+                            <span class="date">Jun 2023 – Jun 2024</span>
+                        </div>
+                    </div>
+                    <div class="resume-item-content">
+                        <ul>
+                            <li>Second authored <em>Hamiltonian Mechanics of Feature Learning: Bottleneck Structure in Leaky ResNets</em> proving the low dimensional bias of regularized neural networks [<a href="https://arxiv.org/abs/2405.17573" target="_blank">arXiv</a>]</li>
+                            <li>Accepted for oral presentation at CPAL 2025</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <div class="experience-item">
-    <h3>Data Science Consultant – <a href="https://neuron7.ai/">Neuron7</a></h3>
-    <span class="date-location">NY, NY, June-Aug 2023</span>
-    </div>
-    <ul>
-      <li> Developed a codebase for rapid prototyping RAG solutions on client data</li>
-      <li> Measured performance of a wide array of natural language search algorithms from the team</li>
-      <li> Experimented with various integrations between traditional NLP techniques and modern embedding methods</li>
-      <li> Monitored the rapidly evolving landscape of open-source methods and models in NLP</li>
-      <li> Led quality check for real client search results</li>
-    </ul>
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div class="resume-item-title">
+                            <h3>Data Science Consultant</h3>
+                            <p class="institution">Neuron7</p>
+                        </div>
+                        <div class="resume-item-meta">
+                            <span class="date">Jun-Aug 2023</span>
+                        </div>
+                    </div>
+                    <div class="resume-item-content">
+                        <ul>
+                            <li>Developed a library for benchmarking hybrid RAG solutions on client data. Decoupling traditional NLP techniques (semantic search) and modern embedding methods (SBERT, E5), the codebase improved search accuracy by up to 20% when retrieving relevant documents from database and up to 30% for multilingual texts</li>
+                            <li>Led quality check for real client search results to verify the labeling accuracy of the client's proprietary records</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <div class="experience-item">
-    <h3>Assistant Modeling Engineer - <a href="https://www.prophesee.ai/">Prophesee</a></h3>
-    <span class="date-location">Paris, France, June-Aug 2022</span>
-    </div>
-    <ul>
-        <li>Worked on a small team directly with the CTO</li>
-        <li>Developed multiple quantitative models to replicate experimental data from mathematical foundations</li>
-        <li>Created interactive tools for the hardware teams to optimize the various component parameters</li>
-        <li>Researched existing literature for generating synthetic filtered noise signals</li>
-        <li>Analyzed the impact of signal noise on the product error rate across different test conditions</li>
-        <li>Completed thorough documentation for academic submission by the company</li>
-    </ul>
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div class="resume-item-title">
+                            <h3>Assistant Modeling Engineer</h3>
+                            <p class="institution">Prophesee</p>
+                        </div>
+                        <div class="resume-item-meta">
+                            <span class="date">Jun-Aug 2022</span>
+                        </div>
+                    </div>
+                    <div class="resume-item-content">
+                        <ul>
+                            <li>Designed a model to replicate the experimental noise profile of the company's proprietary vision system. Along with making the model an interactive tool, the hardware teams were able to optimize 7 component parameters</li>
+                            <li>Analyzed signal noise impact on error rate across 100+ conditions to guide future product research direction</li>
+                            <li>Completed thorough 45-page documentation for continued use by the team once the internship had ended</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <div class="experience-item">
-    <h3>Instructor/Counselor - <a href="https://www.futurestars.com/">Future Stars</a></h3>
-    <span class="date-location">Wayne, PA, July-Aug 2021</span>
-    </div>
-    <ul>
-        <li>Selected, designed and led sports-related activities, flexible to changing needs and the Covid situation</li>
-        <li>Motivated and inspired multiple groups of adolescents for eight-hours a day</li>
-    </ul>
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div class="resume-item-title">
+                            <h3>Algorithms Graduate Tutor</h3>
+                            <p class="institution">NYU Courant - Ernest Davis</p>
+                        </div>
+                        <div class="resume-item-meta">
+                            <span class="date">Sept-Dec 2023</span>
+                        </div>
+                    </div>
+                    <div class="resume-item-content">
+                        <ul>
+                            <li>Personalized instruction for 14 weeks to enhance master's students' understanding of advanced algorithmic concepts</li>
+                            <li>Facilitated breaking down problem statements and simulating algorithmic decision for 3-4 problems weekly</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-    <div class="experience-item">
-    <h3>Data Engineer/App Developer - <a href="https://www.t4g.com/">T4G Limited</a></h3>
-    </div>
-    <span class="date-location">Toronto, Canada, June-Sept 2019</span>
-    <ul>
-        <li>Trained using SQL databases and Microsoft Azure portal features to setup and manipulate client data</li>
-        <li>Developed a Unity game object using Virtual Reality, including 500+ lines of code; presented a 14-page report</li>
-        <li>Managed workstream autonomously and flexible to changing responsibilities</li>
-    </ul>
+            <!-- Education Section -->
+            <section class="resume-section">
+                <h2 class="section-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    Education
+                </h2>
+                
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div class="resume-item-title">
+                            <h3>Master of Science in Computer Science (GPA: 3.9)</h3>
+                            <p class="institution">New York University – Courant Institute of Mathematical Sciences</p>
+                        </div>
+                        <div class="resume-item-meta">
+                            <span class="location">NYC, NY</span>
+                            <span class="date">Sept 2022 - May 2024</span>
+                        </div>
+                    </div>
+                    <div class="resume-item-content">
+                        <p><strong>Thesis:</strong> On Continual Learning using Deep Linear Networks [<a href="https://a6kaiser.github.io/portfolio/KAISER-Thesis-On_Continual_Learning_using_Deep_Linear_Networks.pdf" target="_blank">pdf</a>]</p>
+                    </div>
+                </div>
 
-    <h2>RESEARCH EXPERIENCE</h2>
-    <div class="experience-item">
-        <h3>Master's thesis - advised by Arthur Jacot</h3>
-        <span class="date-location">NY, NY, Sept 2023 - May 2024</span>
-    </div>
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div class="resume-item-title">
+                            <h3>Bachelor of Science in Applied Mathematics</h3>
+                            <p class="institution">Northwestern University</p>
+                        </div>
+                        <div class="resume-item-meta">
+                            <span class="location">Evanston, IL</span>
+                            <span class="date">Sept 2018 – Jun 2022</span>
+                        </div>
+                    </div>
+                    <div class="resume-item-content">
+                        <p><strong>Concentration:</strong> AI & Machine Learning</p>
+                        <p><strong>Minor:</strong> Economics and Kellogg Certificate Program for Undergraduates, Financial Economics</p>
+                    </div>
+                </div>
+            </section>
 
-    <div class="experience-item">
-        <h3>Researcher - NYU Courant, Arthur Jacot</h3>
-        <span class="date-location">NY, NY, June 2023 - Present</span>
-    </div>
-    <p>Second authored paper for NeurIPS titled Hamiltonian Mechanics of Feature Learning: Bottleneck Structure in Leaky ResNets (available on <a href="https://arxiv.org/abs/2405.17573">arXiv<a/>)</p>
+            <!-- Key Projects Section -->
+            <section class="resume-section">
+                <h2 class="section-title">
+                    <i class="fas fa-code"></i>
+                    Key Projects
+                </h2>
 
-    <div class="experience-item">
-        <h3>Surveying Online Learning and Approachability Theory</h3>
-        <span class="date-location">NY, NY, March 2023 - June 2023</span>
-    </div>
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div class="resume-item-title">
+                            <h3>Text2RelationalGraph</h3>
+                            <p class="institution">[<a href="https://github.com/adithyaiyer1999/text2knowledgeGraph" target="_blank">Github</a>]</p>
+                        </div>
+                        <div class="resume-item-meta">
+                            <span class="date">Dec 2023</span>
+                        </div>
+                    </div>
+                    <div class="resume-item-content">
+                        <ul>
+                            <li>Created an app to convert long-form texts into hierarchical relational graphs, for use in summarization and search</li>
+                        </ul>
+                    </div>
+                </div>
 
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div class="resume-item-title">
+                            <h3>Large Language & Vision Model Seminar</h3>
+                        </div>
+                        <div class="resume-item-meta">
+                            <span class="date">Sept – Dec 2023</span>
+                        </div>
+                    </div>
+                    <div class="resume-item-content">
+                        <ul>
+                            <li>Analyzed cutting-edge research in Foundation Models and presented lectures on <a href="https://a6kaiser.github.io/portfolio/LLVM/Llama2.pdf" target="_blank">Llama 2</a> [<a href="https://arxiv.org/pdf/2307.09288" target="_blank">paper</a>], <a href="https://a6kaiser.github.io/portfolio/LLVM/Imagen%20Video.pdf" target="_blank">Imagen Video</a> [<a href="https://arxiv.org/pdf/2210.02303" target="_blank">paper</a>], <a href="https://a6kaiser.github.io/portfolio/LLVM/DINOv2.pdf" target="_blank">DINOv2</a> [<a href="https://arxiv.org/pdf/2304.07193" target="_blank">paper</a>] and <a href="https://a6kaiser.github.io/portfolio/LLVM/Image%20Synthesis.pdf" target="_blank">high resolution image synthesis</a> [<a href="https://arxiv.org/pdf/2112.10752" target="_blank">paper</a>]</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <h2>OTHER EXPERIENCE</h2>
-    <div class="experience-item">
-        <h3>Treasurer - <a href="https://open.spotify.com/artist/69Pf8rqiLQ8L41MyLUiSja">Freshman Fifteen<a/> (Collegiate A Capella)</h3>
-        <span class="date-location">Evanston, IL, March 2019 - May 2019</span>
-    </div>
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div class="resume-item-title">
+                            <h3>Discretization gives Uniformity: Survey of a Universal Algorithm for OCO</h3>
+                        </div>
+                        <div class="resume-item-meta">
+                            <span class="date">May 2024</span>
+                        </div>
+                    </div>
+                    <div class="resume-item-content">
+                        <ul>
+                            <li>Surveyed proposal to consolidate the best OCO algorithms to achieve optimal guarantees in all 3 convex-geometries</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <div class="experience-item">
-        <h3>Callahan - Legally Blonde (Northwestern Freshman Musical)</h3>
-        <span class="date-location">Evanston, IL, March 2019 - May 2019</span>
-    </div>
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div class="resume-item-title">
+                            <h3>Survey of Online Learning and Approachability Theory</h3>
+                        </div>
+                        <div class="resume-item-meta">
+                            <span class="date">May 2023</span>
+                        </div>
+                    </div>
+                    <div class="resume-item-content">
+                        <ul>
+                            <li>Blackwell's Approachability Theory, meant for Game Theory, silently provides the foundation of machine learning</li>
+                        </ul>
+                    </div>
+                </div>
 
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div class="resume-item-title">
+                            <h3>Adam Limitation Study</h3>
+                        </div>
+                        <div class="resume-item-meta">
+                            <span class="date">May 2024</span>
+                        </div>
+                    </div>
+                    <div class="resume-item-content">
+                        <ul>
+                            <li>Explored the reasons for Adam's empirical dominance by proving dynamical properties in 4 regimes of importance</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-  </main>
+            <!-- Skills Section -->
+            <section class="resume-section">
+                <h2 class="section-title">
+                    <i class="fas fa-cogs"></i>
+                    Core Skills
+                </h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Programming</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">MATLAB</span>
+                            <span class="skill-tag">LLM Prompt Engineering</span>
+                            <span class="skill-tag">RAG</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">HuggingFace</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Mathematics</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Feature Learning</span>
+                            <span class="skill-tag">Online Learning</span>
+                            <span class="skill-tag">Linear Algebra</span>
+                            <span class="skill-tag">Statistics</span>
+                            <span class="skill-tag">Game Theory</span>
+                            <span class="skill-tag">Numerical Methods</span>
+                            <span class="skill-tag">PDEs</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Achievements</h4>
+                        <p>Perfect 800 SAT Math and 170 GRE Quantitative, 1st place Math Olympiad, Créteil, France, 2017</p>
+                    </div>
+                </div>
+            </section>
 
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Professional Summary</h4>
+                    <p>Lead Machine Learning Engineer with expertise in scalable AI systems, deep learning theory, and practical ML applications. Proven track record in research publications, large-scale data processing, and strategic ML implementation.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="footer-social">
+                        <a href="https://github.com/a6kaiser" target="_blank">GitHub</a>
+                        <a href="mailto:amjkaiser@gmail.com">Email</a>
+                        <a href="https://www.linkedin.com/in/alexandre-k-823639b6/" target="_blank">LinkedIn</a>
+                        <a href="https://scholar.google.com/citations?hl=en&user=axyxBscAAAAJ" target="_blank">Scholar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Alexandre Kaiser. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Resume-specific styles */
+        .resume-header {
+            padding: 120px 0 60px;
+            background: linear-gradient(135deg, var(--background) 0%, var(--background-secondary) 100%);
+        }
+
+        .resume-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .resume-title {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .resume-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info {
+            display: flex;
+            gap: var(--spacing-lg);
+            justify-content: center;
+            margin-bottom: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .contact-info i {
+            color: var(--primary-color);
+        }
+
+        .resume-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .resume-content {
+            padding: var(--spacing-3xl) 0;
+        }
+
+        .resume-section {
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .resume-item {
+            background: var(--background-card);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-normal);
+        }
+
+        .resume-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .resume-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .resume-item-title h3 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .institution {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .institution a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .institution a:hover {
+            text-decoration: underline;
+        }
+
+        .resume-item-meta {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .location {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .date {
+            background: var(--primary-color);
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+
+        .resume-item-content {
+            line-height: 1.6;
+        }
+
+        .resume-item-content ul {
+            margin: 0;
+            padding-left: var(--spacing-lg);
+        }
+
+        .resume-item-content li {
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-secondary);
+        }
+
+        .resume-item-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .resume-item-content a:hover {
+            text-decoration: underline;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: var(--font-size-2xl);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .section-title i {
+            color: var(--primary-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .skill-category {
+            background: var(--background-card);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-category h4 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+        }
+
+        .skill-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .resume-item-header {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+
+            .resume-item-meta {
+                text-align: left;
+                flex-direction: row;
+                gap: var(--spacing-md);
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+        }
+    </style>
 </body>
 </html>

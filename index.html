@@ -1,76 +1,423 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Alexandre Kaiser - Homepage</title>
-  <link rel="stylesheet" href="styles/main_style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexandre Kaiser - Lead Machine Learning Engineer</title>
+    <link rel="stylesheet" href="styles/main_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <div class="header">
-      <!-- Profile picture and navigation -->
-      <div class="profile-pic">
-          <a href="https://www.instagram.com/a6x6kaiser/" target="_blank">
-              <img src="icons/profile_pic.jpg" alt="Profile Picture">
-          </a>
-      </div>
-      <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="AlexandreKaiser_Resume.pdf">Resume</a>
-          <!-- Dropdown container for courses -->
-          <div class="courses-dropdown">
-              <a href="courses.html">Courses</a>
-              <div class="courses-dropdown-content">
-                  <a href="course1.html">Course 1</a>
-                  <a href="course2.html">Course 2</a>
-                  <a href="course3.html">Course 3</a>
-                  <a href="course4.html">Course 4</a>
-              </div>
-          </div>
-      </div>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="icons/profile_pic.jpg" alt="Alexandre Kaiser" class="nav-profile-pic">
+                <span class="nav-name">Alexandre Kaiser</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#research" class="nav-link">Research</a>
+                <a href="AlexandreKaiser_Resume.pdf" class="nav-link" target="_blank">Resume</a>
+                <!-- <div class="nav-dropdown">
+                    <a href="#projects" class="nav-link">Projects <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="course_demo.html">Course Demos</a>
+                        <a href="course_sql.html">SQL Course</a>
+                        <a href="course_feature_learning_v1.html">Feature Learning</a>
+                    </div>
+                </div> -->
+            </div>
 
-      <div class="spacer"></div>
+            <!-- Social Links -->
+            <div class="nav-social">
+                <a href="https://github.com/a6kaiser" target="_blank" class="social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:amjkaiser@gmail.com" class="social-link" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/alexandre-k-823639b6/" target="_blank" class="social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://x.com/amjkaiser" target="_blank" class="social-link" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://scholar.google.com/citations?hl=en&user=axyxBscAAAAJ" target="_blank" class="social-link" title="Google Scholar">
+                    <i class="fas fa-graduation-cap"></i>
+                </a>
+            </div>
 
-      <!-- Social media icons -->
-      <div class="social-icons">
-          <a href="https://github.com/a6kaiser" target="_blank">
-              <img src="icons/github_icon.png" alt="GitHub">
-          </a>
-          <a href="mailto:amjkaiser@gmail.com">
-              <img src="icons/gmail_icon.png" alt="Gmail">
-          </a>
-          <a href="https://www.linkedin.com/in/alexandre-k-823639b6/" target="_blank">
-              <img src="icons/linkedin_icon.png" alt="LinkedIn">
-          </a>
-          <a href="https://x.com/amjkaiser" target="_blank">
-              <img src="icons/twitter_icon.png" alt="Twitter">
-          </a>
-          <a href="https://scholar.google.com/citations?hl=en&user=axyxBscAAAAJ" target="_blank">
-              <img src="icons/scholar_icon.png" alt="Google Scholar">
-          </a>
-      </div>
-  </div>
-  <main>
-    <p> Hello! I'm Alexandre Kaiser, a current Master's student in Computer Science at NYU Courant. Before that, I received my Bachelor's in Applied Mathematics from Northwestern University. I am honored to be advised by Arthur Jacot for my Master's thesis researching deep learning optimization for continual learning tasks. Aside from my studies, my recent work experience includes teaching, tutoring, engineering and a data scientist.</p>
-    <p>My goal is to work towards a world that strikes a better balance between innovation and wastefulness. As that is an optimization problem, I turn to my background in Applied Mathematcs which taught me the strength of utilizing abstractions to solve any and all applicable real-world tasks. However, most real-world tasks that I am interested in&mdash;education, governance, leadership&mdash;are too complex to be abstracted. I chose to study machine learning in the hope that one more layer of abstraction from the problem would enable us to model a machine which in turn can model any task.</p>
+            <!-- Mobile Menu Toggle -->
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-    <div class="research-interests-header">
-      <h2>Research Interests</h2>
-      <div class="interest-tags">
-        <span class="interest-tag">Deep Learning</span>
-        <span class="interest-tag">Optimization</span>
-        <span class="interest-tag">Deep Learning Theory</span>
-        <span class="interest-tag">Online learning</span>
-        <span class="interest-tag">Learning Theory</span>
-      </div>
-    </div>
-    <p>My research interests lie particularly in the role of optimization on a model’s implicit bias and scaling properties, thus how features and symmetries develop in deep learning models. This includes research on how the loss surface lends itself to emergent behavior in practice. Though my research is theoretical, I am motivated by a desire to improve the usefulness of algorithms in practice. Agnostic to the task or even its modalities, I aim to improve our understanding of deep learning models to better predict their behavior in real-world applications. </p>
-  </main>
-  <footer>
-    <h3>Notable quotes and expressions I think about a lot</h3>
-    <ul>
-        <li>"Your math isn't real" - paraphrased from <a href="https://www.youtube.com/watch?v=W39kfrxOSHg&t=363s">Sabine Hossenfelder</a></li>
-        <li>"La lutte elle-même vers les sommets suffit à remplir un cœur d’homme." - <em>Le mythe de Sisyphe</em> by Albert Camus</li>
-        <li>"You can't know, but you can reason" - My original socratic expression
-    </ul>
-</footer>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="highlight">Alexandre</span> Kaiser
+                    </h1>
+                    <p class="hero-subtitle">
+                        Lead Machine Learning Engineer & Head of Insights at GatherGov • MSCS at NYU Courant • BSAM at Northwestern
+                    </p>
+                    <div class="hero-badges">
+                        <span class="badge">GatherGov</span>
+                        <span class="badge">Machine Learning</span>
+                        <span class="badge">Applied Mathematics</span>
+                        <span class="badge">Engineer</span>
+                        <span class="badge">NYU</span>
+                        <span class="badge">Northwestern</span>
+                        <span class="badge">French</span>
+                        <span class="badge">Canadian</span>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#experience" class="btn btn-primary">View Experience</a>
+                        <a href="AlexandreKaiser_Resume.pdf" target="_blank" class="btn btn-outline">Download Resume</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-image-container">
+                        <img src="icons/profile_pic.jpg" alt="Alexandre Kaiser">
+                        <div class="hero-image-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lead">
+                        Hello! I'm Alexandre Kaiser, Lead Machine Learning Engineer & Head of Insights at GatherGov. I design and build AI systems that make local government data across the United States more transparent and actionable.
+                    </p>
+                    
+                    <p>
+                        In 2024, I earned my Master's in Computer Science at NYU Courant, where I conducted research on deep learning theory under Arthur Jacot. Prior to that, I graudated with a Bachelor's in Applied Mathematics from Northwestern University—driven by a curiosity in how mathematical principles impact each domain.  
+                    </p>
+
+                    <p>
+                        Raised in a business-minded family, but drawn to philosophical questions, I thrive at the intersection of theory and real-world impact. 
+                    </p>
+                    
+                    <p>
+                        My work focuses on building scalable ML systems that bridge theoretical understanding with real-world impact. 
+                        At GatherGov, I lead the full lifecycle of ML-powered insights, from strategic planning to hands-on development, 
+                        delivering actionable intelligence through state-of-the-art models and agentic workflows.
+                    </p>
+                    
+                    <p>
+                        My goal is to work towards a world that strikes a better balance between innovation and wastefulness. As that is an optimization problem, I turn to my background in Applied Mathematcs which taught me the strength of utilizing abstractions to solve any and all applicable real-world tasks. However, most real-world tasks that I am interested in—education, governance, leadership—are too complex to be abstracted. I chose to study machine learning in the hope that one more layer of abstraction from the problem would enable us to model a machine which in turn can model any task.
+                    </p>
+
+                    <p>
+                        A recreational goal of mine is if somebody finds something interesting, I hope to understand why. And if somebody finds happiness in something, I aspire to find it too.
+                    </p>
+                </div>
+                
+                <div class="about-personal">
+                    <div class="personal-card flag-card">
+                        <div class="friendship-flag">
+                            <img src="icons/friendship_flag.png" alt="French and Canadian Friendship Flag" class="flag-image">
+                        </div>
+                    </div>
+                    
+                    <div class="personal-card university-card">
+                        <div class="university-image">
+                            <img src="icons/NU & NYU.png" alt="Northwestern and NYU Universities" class="uni-image">
+                        </div>
+                    </div>
+                    
+                    <div class="personal-card personality-card">
+                        <div class="personality-image">
+                            <img src="icons/brain.webp" alt="Analytical and Creative Mind" class="brain-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Professional Experience</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-date">Dec 2024 - Present</div>
+                    <div class="experience-content">
+                        <h3>Lead Machine Learning Engineer & Head of Insights</h3>
+                        <p class="experience-company">GatherGov</p>
+                        <ul class="experience-details">
+                            <li>Lead the full lifecycle of ML-powered insights, from strategic planning to hands-on development</li>
+                            <li>Architect and maintain AI tools processing 30,000+ hours of transcripts and 20,000+ PDFs monthly</li>
+                            <li>Define ML strategy through prototyping, feature engineering, model benchmarking, and scalable pipeline development</li>
+                            <li>Design custom analytics pipelines to uncover high-value trends and market opportunities</li>
+                            <li>Extract and publish marketable insights on social media, driving brand engagement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-date">Jun 2023 - Jun 2024</div>
+                    <div class="experience-content">
+                        <h3>Researcher</h3>
+                        <p class="experience-company">NYU Courant - Arthur Jacot Lab</p>
+                        <ul class="experience-details">
+                            <li>Second authored "Hamiltonian Mechanics of Feature Learning: Bottleneck Structure in Leaky ResNets"</li>
+                            <li>Proved low dimensional bias of regularized neural networks</li>
+                            <li>Paper accepted for oral presentation at CPAL 2025</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-date">Jun - Aug 2023</div>
+                    <div class="experience-content">
+                        <h3>Data Science Consultant</h3>
+                        <p class="experience-company">Neuron7</p>
+                        <ul class="experience-details">
+                            <li>Developed library for benchmarking hybrid RAG solutions, improving search accuracy by up to 20%</li>
+                            <li>Enhanced multilingual text retrieval performance by up to 30%</li>
+                            <li>Led quality assurance for client search results and proprietary record labeling</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-date">Jun - Aug 2022</div>
+                    <div class="experience-content">
+                        <h3>Assistant Modeling Engineer</h3>
+                        <p class="experience-company">Prophesee</p>
+                        <ul class="experience-details">
+                            <li>Designed interactive model replicating experimental noise profile of proprietary vision system</li>
+                            <li>Enabled hardware team optimization of 7 component parameters</li>
+                            <li>Analyzed signal noise impact across 100+ conditions for product research direction</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="research">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Research & Publications</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="research-tags">
+                <span class="research-tag">Deep Learning Theory</span>
+                <span class="research-tag">Feature Learning</span>
+                <span class="research-tag">Online Learning</span>
+                <span class="research-tag">Continual Learning</span>
+                <span class="research-tag">Optimization</span>
+            </div>
+
+            <div class="research-content">
+                <p class="research-description">
+                    My research focuses on the theoretical foundations of deep learning, particularly in understanding 
+                    how optimization affects feature learning and neural network dynamics. I investigate the implicit 
+                    biases that emerge during training and their implications for model behavior and generalization.
+                </p>
+            </div>
+
+            <!-- Featured Work -->
+            <div class="featured-work">
+                <h3 class="featured-title">Publications</h3>
+                <div class="publications-grid">
+                    <div class="publication-card">
+                        <div class="publication-header">
+                            <h4>Hamiltonian Mechanics of Feature Learning</h4>
+                            <span class="publication-year">2025</span>
+                        </div>
+                        <p class="publication-venue">CPAL 2025 (Oral Presentation) • Second Author</p>
+                        <p class="publication-description">
+                            Proved the low dimensional bias of regularized neural networks through Hamiltonian mechanics framework.
+                        </p>
+                        <a href="https://arxiv.org/abs/2405.17573" target="_blank" class="publication-link">
+                            View on arXiv <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <h3 class="featured-title">Research Portfolio</h3>
+                <div class="publications-grid">
+                    <div class="publication-card">
+                        <div class="publication-header">
+                            <h4>On Continual Learning using Deep Linear Networks</h4>
+                            <span class="publication-year">2024</span>
+                        </div>
+                        <p class="publication-venue">Master's Thesis • NYU Courant</p>
+                        <p class="publication-description">
+                            Investigated continual learning dynamics through theoretical analysis of deep linear networks.
+                        </p>
+                        <a href="https://a6kaiser.github.io/portfolio/KAISER-Thesis-On_Continual_Learning_using_Deep_Linear_Networks.pdf" target="_blank" class="publication-link">
+                            View PDF <i class="fas fa-file-pdf"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="publication-card">
+                        <div class="publication-header">
+                            <h4>Survey of a Universal Algorithm for OCO</h4>
+                            <span class="publication-year">2024</span>
+                        </div>
+                        <p class="publication-venue">Research Survey</p>
+                        <p class="publication-description">
+                            Surveyed proposal to consolidate optimal OCO algorithms across all convex geometries.
+                        </p>
+                        <a href="portfolio/Kaiser-Surveying a Universal Algorithm for OCO.pdf" target="_blank" class="publication-link">
+                            View PDF <i class="fas fa-file-pdf"></i>
+                        </a>
+                    </div>
+
+                    <div class="publication-card">
+                        <div class="publication-header">
+                            <h4>Survey of Online Learning and Approachability Theory</h4>
+                            <span class="publication-year">2023</span>
+                        </div>
+                        <p class="publication-venue">Research Survey</p>
+                        <p class="publication-description">
+                            Explored how Blackwell's Approachability Theory provides foundations for machine learning.
+                        </p>
+                        <a href="portfolio/Kaiser-Survey of Online Learning and Approachability Theory.pdf" target="_blank" class="publication-link">
+                            View PDF <i class="fas fa-file-pdf"></i>
+                        </a>
+                    </div>
+
+                    <div class="publication-card">
+                        <div class="publication-header">
+                            <h4>Adam Limitation Study</h4>
+                            <span class="publication-year">2024</span>
+                        </div>
+                        <p class="publication-venue">Research Study</p>
+                        <p class="publication-description">
+                            Explored reasons for Adam's empirical dominance by proving dynamical properties across 4 key regimes.
+                        </p>
+                        <a href="portfolio/Kaiser-Exploring the Dynamics of Adam.pdf" target="_blank" class="publication-link">
+                            View PDF <i class="fas fa-file-pdf"></i>
+                        </a>
+                    </div>
+
+                    <div class="publication-card">
+                        <div class="publication-header">
+                            <h4>Text2RelationalGraph</h4>
+                            <span class="publication-year">2023</span>
+                        </div>
+                        <p class="publication-venue">Open Source Project</p>
+                        <p class="publication-description">
+                            Created app to convert long-form texts into hierarchical relational graphs for summarization and search.
+                        </p>
+                        <a href="https://github.com/adithyaiyer1999/text2knowledgeGraph" target="_blank" class="publication-link">
+                            View on GitHub <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Inspiration</h4>
+                    <blockquote>
+                        "Your math isn't real" - <cite>Sabine Hossenfelder</cite>
+                    </blockquote>
+                    <blockquote>
+                        "La lutte elle-même vers les sommets suffit à remplir un cœur d'homme." 
+                        - <cite>Albert Camus, Le mythe de Sisyphe</cite>
+                    </blockquote>
+                    <blockquote>
+                        "You can't know, but you can reason" - <cite>My original socratic expression</cite>
+                    </blockquote>
+                    <p style="font-size: 0.8em; margin-top: 1rem; opacity: 0.7;">
+                        <a href="meaning-of-life.html" style="color: inherit; text-decoration: none;">Want to know the meaning of life?</a>
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="footer-social">
+                        <a href="https://github.com/a6kaiser" target="_blank">GitHub</a>
+                        <a href="mailto:amjkaiser@gmail.com">Email</a>
+                        <a href="https://www.linkedin.com/in/alexandre-k-823639b6/" target="_blank">LinkedIn</a>
+                        <a href="https://scholar.google.com/citations?hl=en&user=axyxBscAAAAJ" target="_blank">Scholar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Alexandre Kaiser. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active navigation link highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
